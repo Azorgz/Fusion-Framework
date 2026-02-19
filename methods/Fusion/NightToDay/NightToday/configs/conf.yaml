@@ -1,0 +1,120 @@
+devices: 0
+
+model:
+  name: 'NightToday'
+  names_domains: ['Day', 'Thermal', 'Night']
+  mode: 'train'  # 'train', 'test'
+  build_from_checkpoint: True
+  fusion_first: True
+  pedestrian_color: null #[black, red] # color of pedestrian in fake D images (color, contour)
+
+  seg:
+    num_classes: 19
+    type: 'Segmentor'#  'LETNet'  # 'Segmentor'
+    base_dim: 64
+    n_layers: 4
+    training_schedule:
+      start_epoch: 0
+      end_epoch: 75
+      updateGT_D_start_epoch: 5
+      updateGT_TN_start_epoch: 15
+
+  gen:
+    downscaling: 2
+    input_size: -1
+    hidden_dim: 256
+    n_enc_layers: 4
+    n_shared_layers: 0
+    n_dec_layers: 5
+    dropout: 0.0
+    fus:
+      preprocess_thermal:
+        bins: 2048
+        scene: 8
+      hidden_dim: 256
+      n_enc_layers: 4
+      dropout: 0.25
+      n_downscaling: 2
+
+  discr:
+    base_dim: 64
+    n_layers: 4
+
+training:
+  checkpoint_dir: '/checkpoints'
+  checkpoint_freq: 1  # epochs
+  checkpoint_save_latest: 500  # steps
+  split_optimizers: False
+  split_weights: False
+  visualize_freq: 25  # steps
+  visualize_dir: '/training_visuals'
+  test_freq: 0  # epochs
+  start_epoch: 40
+  total_epochs: 100
+  resume: True
+  resume_epoch: latest
+#    G: -1
+#    G2: 100
+#    G3: 100
+#    D: 100
+#    S: 100
+  partial_train:
+#    G: [2, 5, 6]
+#    D: [2]
+#    S: [2]
+  lr:
+    G: 0.0001
+    D: 0.0001
+    S: 0.0001
+  betas:
+    G: [0.5, 0.999]
+    D: [0.5, 0.999]
+    S: [0.5, 0.999]
+  loss_scheduler:  # [switch, switch, switch, ...], value
+    lambda_color: [[ 2,  ], 1.0]
+    lambda_id: [[ 0, 10  ], 1.0]
+    lambda_cycle:  [[ 0,  ], 5.]
+    lambda_ssim:  [[ 2,  ], 2.5]
+    lambda_seg:  [[ 0, ], 2.5]
+    lambda_semEdge:  [[ 0,  ], 2.5]
+    lambda_gan:  [[ 0,  ], 2.5]
+    lambda_tv:  [[ 0,  ], 5.]
+    lambda_sga: [[ 40,  ], 0.5]
+    lambda_latent: [[ 0, 10  ], .5]
+    lambda_att: [[ 40, ], 0.0]
+    lambda_fus: [[ 0,  2], 0.2]
+    lambda_scale_robustness: [[ 60,  ], 2.5]
+    lambda_trafficlight_l: [[ 0,  ], 1.0]
+    lambda_trafficlight_f: [[ 0,  ], 2.5]
+    lambda_thermal: [[ 1,  ], 2.5]
+    lambda_sharpness: [[ 0,  ], 2.5]
+    lambda_cgr: [[ 5,  ], 2.0]  # Conditional Gradient Repair
+    lambda_bc: [[ 5,  ], 2.0]  # Bias correction Loss
+  gan_type: "lsgan"  # ['lsgan', 'hinge', 'wgan-gp', 'ralsgan']
+
+data:
+  loader:
+    batch_size: 1
+    num_workers: 1
+    shuffle: True
+    resize_and_crop: True
+  train_datasets:
+    - name: 'FLIR'
+      sampling: 1
+      augmentations:
+        hflip: True
+#    - name: 'LYNRED'
+#      sampling: 1
+#      augmentations:
+#        hflip: True
+#  test_datasets:
+#      - name: 'LYNRED_DAY_SAMPLES'
+#        sampling: 1
+#        augmentations:
+#          hflip: False
+#      - name: 'LYNRED_NIGHT_SAMPLES'
+#        sampling: 1
+#        augmentations:
+#          hflip: False
+
+

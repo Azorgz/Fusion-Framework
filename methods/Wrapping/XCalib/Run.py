@@ -1,0 +1,28 @@
+import os
+import warnings
+import torch
+
+from model.XCalib import XCalib
+from options.options import get_options
+os.environ["PYTORCH_ALLOC_CONF"] = 'expandable_segments:True'
+
+
+def fit_cams(config) -> XCalib:
+    model = XCalib(cfg=config)
+    model = model.to(config.model['device'])
+    model.optimize_parameters()
+    return model
+
+
+if __name__ == "__main__":
+    torch.backends.cudnn.conv.fp32_precision = 'tf32'
+    warnings.filterwarnings('ignore')
+    cfg = get_options()
+    if cfg.run_parameters['mode'] in ['all_in_one', 'calibration_only']:
+        xcalib = fit_cams(cfg)
+        if xcalib.cfg.run_parameters['save_calib']:
+            xcalib.save_cameras_rig()
+    else:
+        xcalib = XCalib(cfg=cfg).to(cfg.model['device'])
+    if cfg.run_parameters['mode'] in ['all_in_one', 'registration_only']:
+        xcalib.wrap_all()

@@ -1,0 +1,4 @@
+name: pro
+
+pretrained: True
+checkpoint: /methods/Wrapping/XCalib/model/backbone/ml_depth_pro/checkpoints/depth_pro.pt

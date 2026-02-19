@@ -1,0 +1,14 @@
+------------ Options -------------
+crop: [0, 0, 0, 0]
+dataset: ['exp5']
+device: cuda
+direction: vis2ir
+loadSize: (512, 512)
+load_16bits: False
+name: [('xcalib', 'nighttoday')]
+reset_result: True
+resize: True
+sampling: 1
+shuffle: False
+task: wrapping_and_fusion
+-------------- End ----------------

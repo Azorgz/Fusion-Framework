@@ -1,0 +1,15 @@
+name: XCalib
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.11.9
+  - pip
+  - pip:
+      - tqdm
+      - jaxtyping
+      - git+https://github.com/Azorgz/ImagesCameras.git
+      - cupy
+      - timm
+      - huggingface_hub

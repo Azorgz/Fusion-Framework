@@ -1,0 +1,9 @@
+root_cameras:
+  - examples/FLIR_DAY/vis
+  - examples/FLIR_DAY/ir
+
+cameras_name:
+  - RGB
+  - IR
+
+stage: outdoor

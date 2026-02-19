@@ -1,0 +1,87 @@
+Index: methods/Wrapping/XCalib/model/cameras.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import os\n\nimport numpy as np\nfrom ImagesCameras.Cameras import LearnableCamera\nfrom torch import nn\nfrom torch.nn import ModuleList\nfrom torch.utils.data import Dataset, default_collate\nfrom ImagesCameras import Camera, CameraSetup\nfrom model.frame_sampler import FrameSampler\n\nimport torch\nfrom misc.Mytypes import CamerasCfg, Batch\n\n\nclass CameraBundle(nn.Module):\n\n    def __init__(self, cameras: list[LearnableCamera]):\n        nn.Module.__init__(self)\n        self.cameras = ModuleList(cameras)\n        self.__dict__.update({f'{camera.name}': camera for camera in cameras})\n        self.list = [camera for camera in cameras]\n\n    def __len__(self):\n        return len(self.cameras)\n\n    def __getitem__(self, idx: int) -> LearnableCamera:\n        return self.list[idx]\n\n\nclass Cameras(Dataset, nn.Module):\n    cfg: CamerasCfg\n    cameras: CameraBundle\n\n    def __init__(\n            self,\n            cfg: CamerasCfg,\n            frame_sampler: FrameSampler,\n            *args,\n            cameras=None,\n    ) -> None:\n        super().__init__()\n        self.cfg = cfg\n        self.name = self.cfg.name\n        self.frame_sampler = frame_sampler\n        self.modality = []\n        self.stage = cfg.stage\n        if cfg.from_file is not None:\n            self.from_file(cfg.from_file)\n        elif cameras is None:\n            self.load_camera(*args)\n        else:\n            self.cameras = cameras['cameras']\n            self.modality = cameras['modality']\n        self.indices = self.frame_sampler.sample(len(self.cameras[0].files),\n                                                 torch.device(\"cpu\"),\n                                                 self.cameras[0].data.fps, 0)\n        self.cfg.root_cameras = [root.replace('local::', os.getcwd()) for root in self.cfg.root_cameras]\n        self.path = self.cfg.root_cameras[0]\n\n    def from_file(self, path: str | os.PathLike):\n        setup = CameraSetup(from_file=path)\n        from_setup = [(cam.path, cam.intrinsics[0], cam.extrinsics[0, :, :], cam.id, cam.name) for i, cam in enumerate(setup.cameras.values())]\n        cams = [LearnableCamera(v[0], intrinsics=v[1], extrinsics=v[2], id=v[3], name=v[4]) for v in from_setup]\n        self.cameras = CameraBundle(cams)\n        self.modality = [cam.modality for cam in cams]\n\n    def load_camera(self, *args):\n        assert len(self.cfg.cameras_name) == len(\n            self.cfg.root_cameras), \"The number of camera names must be equal to the number of camera folder.\"\n        cams = [LearnableCamera(str(root), id=cam_id, name=cam_name) for _, root, cam_id, cam_name in\n                zip(range(self.cfg.nb_cam),\n                    self.cfg.root_cameras,\n                    self.cfg.cameras_name,\n                    self.cfg.cameras_name)]\n        self.cameras = CameraBundle(cams)\n        for cam, cam_name in zip(self.cameras, self.cfg.cameras_name):\n            if 'rgb' in cam_name.lower():\n                self.modality.append('Visible')\n            elif 'ir' in cam_name.lower():\n                self.modality.append('IR')\n            else:\n                self.modality.append(cam.modality if cam.modality == 'Visible' else 'IR')\n\n    def __len__(self):\n        return len(self.indices)\n\n    @property\n    def total_frames(self):\n        return len(self.cameras[0].files)\n\n    def update_parameters(self):\n        for cam in self.cameras:\n            cam.update_parameters()\n\n    def initial_freeze(self):\n        for cam in self.cameras:\n            # freeze z translation\n            cam.freeze_z = True\n            # freeze z translation\n            cam.freeze_rz = True\n            # freeze c\n            cam.freeze_c = True\n            # freeze skew\n            cam.freeze_skew = True\n\n    def freeze(self):\n        for cam in self.cameras:\n            cam.freeze()\n\n    def unfreeze(self):\n        for cam in self.cameras:\n            cam.unfreeze()\n\n    def read_image(\n            self,\n            camera: Camera,\n            frame_index_in_sequence: int):\n        # Read the image.\n        if camera.modality == 'Visible':\n            image = camera.__getitem__(frame_index_in_sequence)\n            if self.cfg.equalize_visible:\n                image = image.histo_equalization()\n            elif self.cfg.normalize_visible:\n                image = image.normalize()\n            modality = 'Visible'\n        else:\n            image = camera.__getitem__(frame_index_in_sequence).RGB('gray')\n            if self.cfg.equalize_infrared:\n                image = image.histo_equalization()\n            elif self.cfg.normalize_infrared:\n                image = image.normalize()\n            modality = 'IR'\n\n        return {\"image\": image,\n                \"frame_path\": str(camera.files[frame_index_in_sequence]),\n                \"camera\": camera.name,\n                \"modality\": modality}\n\n    def __getitem__(self, idx: int):\n        # while idx >= len(self):\n        #     idx = idx - len(self)\n        indices = self.indices[idx].numpy().tolist()\n        items = [default_collate([self.read_image(cam, index) for index in indices]) for cam in self.cameras]\n        images = [item['image'][:, 0] for item in items]\n        paths = [item['frame_path'] for item in items]\n        cameras = [item['camera'][0] for item in items]\n        modality = [item['modality'][0] for item in items]\n\n        result = {'images': images,\n                  'cameras': cameras,\n                  'frame_paths': paths,\n                  'indices': [indices] * len(self.cameras),\n                  'modality': modality}\n        return Batch(**result)\n\n    def load_images(self, idx: int | list | np.ndarray):\n        if not isinstance(idx, np.ndarray):\n            idx = np.array(idx)\n        indices = [i % self.total_frames for i in idx]\n        items = [default_collate([self.read_image(cam, index) for index in indices]) for cam in self.cameras]\n        images = [item['image'][:, 0] for item in items]\n        paths = [item['frame_path'] for item in items]\n        cameras = [item['camera'][0] for item in items]\n        modality = [item['modality'][0] for item in items]\n\n        result = {'images': images,\n                  'cameras': cameras,\n                  'frame_paths': paths,\n                  'indices': [indices] * len(self.cameras),\n                  'modality': modality}\n        return Batch(**result)\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/methods/Wrapping/XCalib/model/cameras.py b/methods/Wrapping/XCalib/model/cameras.py
+--- a/methods/Wrapping/XCalib/model/cameras.py	
++++ b/methods/Wrapping/XCalib/model/cameras.py	
+@@ -6,10 +6,10 @@
+ from torch.nn import ModuleList
+ from torch.utils.data import Dataset, default_collate
+ from ImagesCameras import Camera, CameraSetup
+-from model.frame_sampler import FrameSampler
++from .frame_sampler import FrameSampler
+ 
+ import torch
+-from misc.Mytypes import CamerasCfg, Batch
++from ..misc.Mytypes import CamerasCfg, Batch
+ 
+ 
+ class CameraBundle(nn.Module):
+@@ -51,35 +51,44 @@
+         else:
+             self.cameras = cameras['cameras']
+             self.modality = cameras['modality']
+-        self.indices = self.frame_sampler.sample(len(self.cameras[0].files),
++        if self.cameras is not None:
++            self.indices = self.frame_sampler.sample(len(self.cameras[0].files),
+                                                  torch.device("cpu"),
+                                                  self.cameras[0].data.fps, 0)
+-        self.cfg.root_cameras = [root.replace('local::', os.getcwd()) for root in self.cfg.root_cameras]
+-        self.path = self.cfg.root_cameras[0]
++            self.cfg.root_cameras = [root.replace('local::', os.getcwd()) for root in self.cfg.root_cameras]
++            self.path = self.cfg.root_cameras[0]
++        else:
++            self.indices = []
++            self.cfg.root_cameras = ''
++            self.path = ''
+ 
+     def from_file(self, path: str | os.PathLike):
+         setup = CameraSetup(from_file=path)
+-        from_setup = [(cam.path, cam.intrinsics[0], cam.extrinsics[0, :, :], cam.id, cam.name) for i, cam in enumerate(setup.cameras.values())]
++        from_setup = [(cam.path, cam.intrinsics[0], cam.extrinsics[0], cam.id, cam.name) for i, cam in enumerate(setup.cameras.values())]
+         cams = [LearnableCamera(v[0], intrinsics=v[1], extrinsics=v[2], id=v[3], name=v[4]) for v in from_setup]
+         self.cameras = CameraBundle(cams)
+         self.modality = [cam.modality for cam in cams]
+ 
+     def load_camera(self, *args):
+-        assert len(self.cfg.cameras_name) == len(
+-            self.cfg.root_cameras), "The number of camera names must be equal to the number of camera folder."
+-        cams = [LearnableCamera(str(root), id=cam_id, name=cam_name) for _, root, cam_id, cam_name in
+-                zip(range(self.cfg.nb_cam),
+-                    self.cfg.root_cameras,
+-                    self.cfg.cameras_name,
+-                    self.cfg.cameras_name)]
+-        self.cameras = CameraBundle(cams)
+-        for cam, cam_name in zip(self.cameras, self.cfg.cameras_name):
+-            if 'rgb' in cam_name.lower():
+-                self.modality.append('Visible')
+-            elif 'ir' in cam_name.lower():
+-                self.modality.append('IR')
+-            else:
+-                self.modality.append(cam.modality if cam.modality == 'Visible' else 'IR')
++        if self.cfg.root_cameras is None or len(self.cfg.root_cameras) == 0:
++            self.modality = []
++            self.cameras = None
++        else:
++            assert len(self.cfg.cameras_name) == len(
++                self.cfg.root_cameras), "The number of camera names must be equal to the number of camera folder."
++            cams = [LearnableCamera(str(root), id=cam_id, name=cam_name) for _, root, cam_id, cam_name in
++                    zip(range(self.cfg.nb_cam),
++                        self.cfg.root_cameras,
++                        self.cfg.cameras_name,
++                        self.cfg.cameras_name)]
++            self.cameras = CameraBundle(cams)
++            for cam, cam_name in zip(self.cameras, self.cfg.cameras_name):
++                if 'rgb' in cam_name.lower():
++                    self.modality.append('Visible')
++                elif 'ir' in cam_name.lower():
++                    self.modality.append('IR')
++                else:
++                    self.modality.append(cam.modality if cam.modality == 'Visible' else 'IR')
+ 
+     def __len__(self):
+         return len(self.indices)
