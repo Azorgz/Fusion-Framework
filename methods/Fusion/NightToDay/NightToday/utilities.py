@@ -1,15 +1,16 @@
 import functools
 from dataclasses import dataclass
-from typing import Literal
+from typing import Literal, List
 
 import numpy as np
 from kmeans_pytorch import kmeans
 from kornia.color import rgb_to_lab, lab_to_rgb
 from kornia.contrib import connected_components
-from kornia.morphology import closing, dilation, opening
+from kornia.morphology import closing, dilation, opening, erosion
 from scipy.ndimage import gaussian_filter
 from skimage import measure
 from skimage.morphology import disk
+from skimage.util import random_noise
 from torch import nn, Tensor
 from torch.nn.functional import conv2d
 from torchvision.transforms.functional import gaussian_blur
@@ -515,13 +516,11 @@ def detect_TL_blobs_mask_free(I_vi):
     G = 0.75 * vi_squared[:, 1:2] - 1.75 * vi_squared[:, 0:1] + 0.75 * vi_squared[:, 2:3]
     O = 1.1 * vi_squared[:, 0:1] - 0.1 * vi_squared[:, 1:2] - 2. * vi_squared[:, 2:3]
     C_intensity, color_idx = torch.max(torch.cat([R, G, O], dim=1), dim=1, keepdim=True)
-    Y = I_vi.mean(1, keepdim=True) * (C_intensity <= 0.1)
+    Y = I_vi.mean(1, keepdim=True) * (C_intensity <= 0.0)
     # ---- Blobs mapping ----
-    Y_filled = fill_holes((Y == 0).float()) - (Y == 0).float()
-    if Y_filled.sum() == 0:
-        M = (Y > Y[Y > 0].mean()).float()
-    else:
-        M = Y_filled * (Y > Y[Y > 0].mean())
+    M = (Y > Y[Y > 0].mean() + Y[Y > 0].std()).float()
+    M = opening(M, get_disk_kernel(1, I_vi.device))
+    M = dilation(M, get_disk_kernel(1, I_vi.device))
     labels = connected_components(M)
     # ---- Saturation enclosure ----
     for B, label in enumerate(labels):
@@ -699,8 +698,8 @@ def UpdateVisGT(fake_IR, Seg_mask, dis_th):
         Seg_mask = F.interpolate(Seg_mask.unsqueeze(1).float(), size=(H, W), mode='nearest').squeeze(1)
 
     # Create veg and sky masks
-    veg_mask = (Seg_mask == 8).float()
-    sky_mask = (Seg_mask == 10).float()
+    veg_mask = (Seg_mask == VEG).float()
+    sky_mask = (Seg_mask == SKY).float()
 
     # Convert IR to [0,1] and grayscale
     fake_IR_norm = (fake_IR + 1.0) * 0.5
@@ -754,30 +753,51 @@ def bhw_to_onehot(GT_mask, num_classes):
 class AttackImages(nn.Module):
     """ Add small perturbations to input images for adversarial training. """
 
-    def __init__(self, device='cuda'):
+    def __init__(self, device='cuda', noise_type: str | List[str] = None):
         super(AttackImages, self).__init__()
         self.device = device
+        noise_type = noise_type or ['speckle', 'gaussian', 'salt_pepper']
+        self.noise_type = noise_type if isinstance(noise_type, list) else [noise_type]
+        self.noise_funcs = {
+            'gaussian': self._perturb_gaussian,
+            'salt_pepper': self._perturb_salt_pepper,
+            'speckle': self._perturb_speckle,
+            }
 
-    def forward(self, *images, balance: float = 0.2, total: bool = False, epsilon=0.1):
-        image_T, image_N = images
-        if torch.rand(1) > balance:
-            perturbed_image_T = self._perturb(image_T, total, epsilon)
-            perturbed_image_N = image_N
-        else:
-            perturbed_image_T = image_T
-            perturbed_image_N = self._perturb(image_N, total, epsilon)
+    # def forward(self, *images, balance: float = 0.2, total: bool = False, epsilon=0.1):
+    #     image_T, image_N = images
+    #     if torch.rand(1) > balance:
+    #         perturbed_image_T = self._perturb(image_T, total, epsilon)
+    #         perturbed_image_N = image_N
+    #     else:
+    #         perturbed_image_T = image_T
+    #         perturbed_image_N = self._perturb(image_N, total, epsilon)
+    #
+    #     return perturbed_image_T.detach(), perturbed_image_N.detach()
 
-        return perturbed_image_T.detach(), perturbed_image_N.detach()
+    def forward(self, *images, epsilon=0.1):
+        perturbed_images = []
+        for image in images:
+            perturbed_image = self._perturb(image.detach(), epsilon=epsilon)
+            perturbed_images.append(perturbed_image.to(image.device))
+        return perturbed_images if len(perturbed_images) > 1 else perturbed_images[0]
 
-    def _perturb(self, image, total: bool, epsilon):
-        l, a, b = rgb_to_lab(image * 0.5 + 0.5).split(1, dim=1)
-        noise = torch.randn_like(l, device=self.device)
-        if total:
-            perturbed_l = (epsilon / 5 * noise) * 100
-        else:
-            perturbed_l = (l / 100 + epsilon * noise) * 100
-        perturbed_l = torch.clamp(perturbed_l, 0, 100.0)
-        return lab_to_rgb(torch.cat([perturbed_l, a, b], dim=1)) * 2 - 1
+    def _perturb_gaussian(self, image, epsilon):
+        return torch.from_numpy(random_noise(image.cpu().numpy(), mode='gaussian', mean=0, var=epsilon/2, clip=True)).float()
+
+    def _perturb_salt_pepper(self, image, epsilon):
+        return torch.from_numpy(random_noise(image.cpu().numpy(), mode='s&p', salt_vs_pepper=0.5, clip=True)).float()
+
+    def _perturb_poisson(self, image, epsilon):
+        return torch.from_numpy(random_noise(image.cpu().numpy(), mode='poisson', clip=True)).float()
+
+    def _perturb_speckle(self, image, epsilon):
+        return torch.from_numpy(random_noise(image.cpu().numpy(), mode='speckle', mean=0, var=epsilon/2, clip=True)).float()
+
+    def _perturb(self, image, epsilon: float):
+        idx = torch.randperm(len(self.noise_type))[0]
+        image = self.noise_funcs[self.noise_type[idx]](image, epsilon)
+        return image
 
 
 # -----------------------------
@@ -1167,12 +1187,22 @@ def ObtainTLightMixedMask(temp_connect_mask: torch.Tensor,
 
 
 def determine_color_N(TL_D):
-    top_third = TL_D[:, :TL_D.shape[1]//3, :]
-    R = top_third[0].mean()
-    mid_third = TL_D[:, TL_D.shape[1]//3:2*TL_D.shape[1]//3, :]
-    Y = (mid_third[1] + mid_third[0]).mean()/2
-    bottom_third = TL_D[:, 2*TL_D.shape[1]//3:, :]
-    G = bottom_third[1].mean()
+    if TL_D.ndim == 4:
+        if TL_D.shape[0] == 1:
+            TL_D = TL_D.squeeze(0)
+        else:
+            res = []
+            for TL_D_i in TL_D:
+                res.append(determine_color_N(TL_D_i))
+            return res
+    elif TL_D.ndim != 3:
+        raise ValueError("Input TL_D must be 3D or 4D tensor.")
+    top_half = TL_D[:, :TL_D.shape[1]//2, :]
+    R = (2 * top_half[0] - top_half[2]).mean() + top_half.mean()
+    mid_half = TL_D[:, TL_D.shape[1]//3:2*TL_D.shape[1]//3, :]
+    Y = (mid_half[1] + mid_half[0] - mid_half[2]).mean() + mid_half.mean()
+    bottom_half = TL_D[:, TL_D.shape[1]//2:, :]
+    G = (bottom_half[1] + bottom_half[2] - bottom_half[0]).mean() + bottom_half.mean()
     if R > Y and R > G:
         return 'red'
     elif G > Y and G > R:

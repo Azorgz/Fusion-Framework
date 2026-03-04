@@ -10,6 +10,7 @@ def ProfileMethods(opt):
     if device == "cuda" and not torch.cuda.is_available():
         print("CUDA is not available, using CPU instead.")
         device = "cpu"
+    device = torch.device(device)
     methods = opt.name
     opt.sampling = 1
     dataLoader = list(get_dataloaders(opt).values())[0]  # Use only the first dataset for profiling

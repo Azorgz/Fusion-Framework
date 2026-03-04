@@ -1,3 +1,4 @@
+import numpy as np
 import torch
 from cv2 import CV_64F, getGaborKernel
 from kornia.color import rgb_to_lab, lab_to_rgb
@@ -11,12 +12,17 @@ from methods.Fusion.SaliencyMaskedFusion.utils import get_GaborFilters
 
 
 class SaliencyFuse(nn.Module):
-    def __init__(self, device):
+    def __init__(self, device, inferSize, **kwargs):
         super(SaliencyFuse, self).__init__()
         self.device = device
+        self.inference_size = inferSize
         self.c = [1, 2, 3]  # Central scales
         self.delta_intensity = [3, 4]  # Surrounding scales
         self.delta_orientation = [2, 3]  # Surrounding scales
+        self.sigmas = np.arange(1, 5)  # Sigma values for Gabor filters
+        self.gabor_filters = [get_GaborFilters(ksize=9, sigma=sigma,
+                                               gamma=self.inference_size[0]/self.inference_size[1],
+                                               device=device, dtype=torch.float32) for sigma in self.sigmas]
 
     def forward(self, img_vis, img_ir):
         img_vis, img_ir = img_vis.to(self.device), img_ir.to(self.device)
@@ -24,15 +30,15 @@ class SaliencyFuse(nn.Module):
         img_vis = interpolate(img_vis, size=img_ir.shape[-2:], mode='bilinear', align_corners=False)
 
         p_vis, *_ = self._get_gaussian_pyr(img_vis)
-        p_ir, sigmas, shape, B = self._get_gaussian_pyr(img_ir)
+        p_ir, shape, B = self._get_gaussian_pyr(img_ir)
 
         # Intensity Saliency maps
         intensity_saliency_vis = self._compute_intensity_saliency(p_vis, shape)
         intensity_saliency_ir = self._compute_intensity_saliency(p_ir, shape)
 
         # Gabor Orientation Saliency maps
-        orientation_saliency_vis = self._compute_orientation_saliency(p_vis, sigmas, shape, B)
-        orientation_saliency_ir = self._compute_orientation_saliency(p_ir, sigmas, shape, B)
+        orientation_saliency_vis = self._compute_orientation_saliency(p_vis, shape, B)
+        orientation_saliency_ir = self._compute_orientation_saliency(p_ir, shape, B)
 
         initial_fusion = self._fusion_maps(intensity_saliency_vis, intensity_saliency_ir, orientation_saliency_vis, orientation_saliency_ir, img_vis, img_ir)
         details_enhanced_fusion = self._enhance_details(initial_fusion)
@@ -93,8 +99,8 @@ class SaliencyFuse(nn.Module):
         shape = img.shape[-2:]
         min_size = max(shape[-2] // (2 ** 8), 1)
         sp = ScalePyramid(n_levels=1, init_sigma=1, min_size=min_size, double_image=False)
-        gaussian_pyr, sigmas, _ = sp(img)
-        return gaussian_pyr, sigmas[0][0].cpu().numpy(), shape, B
+        gaussian_pyr, *_ = sp(img)
+        return gaussian_pyr, shape, B
 
     def _compute_intensity_saliency(self, gaussian_pyr, shape):
         """
@@ -113,7 +119,7 @@ class SaliencyFuse(nn.Module):
         res = torch.stack([interpolate(r, shape) for r in res], dim=1).sum(dim=1)
         return (res - res.min()) / (res.max() - res.min() + 1e-6)
 
-    def _compute_orientation_saliency(self, gaussian_pyr, sigmas, shape, B):
+    def _compute_orientation_saliency(self, gaussian_pyr, shape, B):
         """
         :param img:
         :return:
@@ -126,8 +132,8 @@ class SaliencyFuse(nn.Module):
                 # Reference image (B, H, W, 3)
                 high = gaussian_pyr[c][:, :, 0]
                 low = gaussian_pyr[c + delta][:, :, 0]
-                gabor_kernel_high = get_GaborFilters(9, sigmas[0], gamma=gamma, device=high.device, dtype=high.dtype)
-                gabor_kernel_low = get_GaborFilters(9, sigmas[delta], gamma=gamma, device=high.device, dtype=high.dtype)
+                gabor_kernel_high = self.gabor_filters[0]
+                gabor_kernel_low = self.gabor_filters[self.delta_orientation.index(delta)]
                 O_low = torch.cat([conv2d(low, gk.unsqueeze(0).unsqueeze(0).repeat(B, 1, 1, 1), padding=4) for gk in gabor_kernel_low], dim=1)
                 O_high = torch.cat([conv2d(high, gk.unsqueeze(0).unsqueeze(0).repeat(B, 1, 1, 1), padding=4) for gk in gabor_kernel_high], dim=1)
                 O_blur = interpolate(O_low, size=high.shape[-2:], mode='bilinear', align_corners=False)

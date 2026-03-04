@@ -1,16 +1,14 @@
+import os
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 import torch
-import yaml
-import json
-
 from tqdm import tqdm
-
 from NightToday import build_train_data_from_config
 from NightToday.NTIR2Day import Image2ImageGAT_Dual
 
 
 if __name__ == "__main__":
 
-    displayed_errors = ['trafficlight', 'color']
+    displayed_errors = ['color', 'trafficlight']
 
     # Build model from config  (Default: NightToday/NightToday.yaml)
     model = Image2ImageGAT_Dual(trainable=True)
@@ -32,7 +30,7 @@ if __name__ == "__main__":
             total_steps += batch_size
             epoch_iter += batch_size
             list_errors = [f'{key}: {errors[key]}' for key in displayed_errors]
-            bar.set_description(f"epoch : {e}, {', '.join(list_errors)}")
+            bar.set_description(f"epoch : {e}, iter: {epoch_iter}, {', '.join(list_errors)}")
             torch.cuda.empty_cache()
 
             if i % opt.training.checkpoint_save_latest < batch_size and i != 0:

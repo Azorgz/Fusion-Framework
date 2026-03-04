@@ -18,7 +18,8 @@ def get_model(device, opt, **kwargs):
             self.model = model.eval().to(device)
 
         def forward(self, img_vis, img_ir):
-            return self.model.forward(img_vis, img_ir)
+            out = self.model.forward(img_vis, img_ir)
+            return out
         
         def fit_to_data(self, data):
             cfg_new = get_options(data=data)

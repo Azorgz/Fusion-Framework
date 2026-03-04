@@ -3,15 +3,15 @@ import torch
 import sys
 sys.path.insert(0, "/home/godeta/PycharmProjects/FusionMethods/methods/Fusion/NightToDay")
 
-from methods.Fusion.NightToDay.NightToday.NTIR2Day import Image2ImageGAT_Dual
+from methods.Fusion.NightToDay.NightToday.NTIR2Day import NightToDay
 
 
 def get_model(device, opt, **kwargs):
-    # model = Image2ImageGAT_Dual('/home/godeta/PycharmProjects/FusionMethods/methods/Fusion/NightToDay/checkpoints/latest_net_ResNet_red_ped', trainable=False)
-    model = Image2ImageGAT_Dual('/home/godeta/PycharmProjects/MyTransform/checkpoints/download/latest_net_ResNet', trainable=False)
-    # model = Image2ImageGAT_Dual('/home/godeta/PycharmProjects/MyTransform/checkpoints/download/latest_net_ResNet', trainable=False)
-    # model = Image2ImageGAT_Dual('/home/godeta/PycharmProjects/MyTransform/checkpoints/NightToday/100_net_ResNet', trainable=False)
-    # model = Image2ImageGAT_Dual(os.getcwd() + '/methods/Fusion/NightToDay/checkpoints/latest_net_ResNet', trainable=False)
+    # model = NightToDay('/home/godeta/PycharmProjects/FusionMethods/methods/Fusion/NightToDay/checkpoints/latest_net_ResNet_red_ped', trainable=False)
+    # model = NightToDay('/home/godeta/PycharmProjects/MyTransform/checkpoints/download/best_net_NightToDay_UResNet', trainable=False)
+    # model = NightToDay('/home/godeta/PycharmProjects/MyTransform/checkpoints/download/latest_net_ResNet', trainable=False)
+    # model = NightToDay('/home/godeta/PycharmProjects/MyTransform/checkpoints/NightToday/100_net_ResNet', trainable=False)
+    model = NightToDay(os.getcwd() + '/methods/Fusion/NightToDay/checkpoints/latest_net_NightToDay_IAware', trainable=False)
     model.opt.model.fusion_first = False
 
     class Model(torch.nn.Module):

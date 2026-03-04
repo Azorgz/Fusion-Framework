@@ -3,7 +3,11 @@ from typing import Optional, Tuple
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from kornia.color import rgb_to_lab, lab_to_rgb
+from kornia.filters import median_blur, bilateral_blur
 from torch import conv2d
+from torch.nn import ModuleList
+from torchvision.transforms.functional import gaussian_blur
 
 from . import ThermalPreprocessConfig
 from .CrossRAFT import get_wrapper
@@ -381,6 +385,7 @@ class U_ResNetFusion(nn.Module):
         ir = self.thermal_preprocess(ir, **kwargs)
         if align_first:
             vis_night = self.spatial_aligner(vis_night, ir).detach()
+        # AB = rgb_to_lab(vis_night)[:, 1:] / 128  # extract AB channels and normalize to [-1,1]
         x_feat = torch.cat([ir, vis_night], dim=1)  # concatenate along channel dim
         for layer in self.encoder:
             x_feat = layer(x_feat)
@@ -389,9 +394,15 @@ class U_ResNetFusion(nn.Module):
                 hook_output = getattr(self, f'encoder_hook_{self.hook[-(i + 1)]}')
                 x_feat = x_feat + self.res_skip[-(i + 1)](hook_output)
             x_feat = layer(x_feat)
-        out = self.final_conv(x_feat)
-        return self.tanh_n(1)(out).repeat(1, 3, 1, 1), ir, vis_night  # match input channels
-        # return self.thermal_preprocess(self.tanh_n(1)(out), p_low=0, p_high=100), ir, vis_night  # match input channels
+        out = self.tanh_n(1)(self.final_conv(x_feat))
+        # out = torch.cat([out, AB], dim=1)  # combine with AB channels
+        # return out, ir, vis_night  # match input channels
+
+        # filtered_ir = torch.sqrt(bilateral_blur(ir*0.5+0.5, (3, 3), 0.1, (1.5, 1.5)) + 1e-6)
+        # out = torch.sqrt((self.thermal_postprocess(self.tanh_n(1)(out), p_low=0, p_high=100)*0.5+0.5) * filtered_ir + 1e-6) * 2 - 1
+        # out = self.thermal_postprocess(self.tanh_n(1)(out), p_low=0, p_high=100)
+        # return out, ir, vis_night  # match input channels
+        return self.tanh_n(1)(out).repeat(1, 3, 1, 1), ir, vis_night, None  # match input channels
 
     def train(self, mode: bool = True) -> None:
         super().train(mode)
@@ -452,7 +463,7 @@ class MonotonicThermalLUT(nn.Module):
         x_mean_b = x[:, :, 2::].mean(dim=[1, 2, 3])
         x_std_t = x[:, :, ::2].std(dim=[1, 2, 3])
         x_std = x[:, :, ].std(dim=[1, 2, 3])
-        low_lum_t = (x[:, :, 2::] < -0.90).sum(dim=[1, 2, 3]) / (x[:, :, 2::]>=-1).sum(dim=[1, 2, 3])
+        low_lum_t = (x[:, :, ::2] < -0.90).sum(dim=[1, 2, 3]) / torch.tensor([x.shape[0], torch.prod(torch.tensor(x.shape[-2:]))//2])
         cond1 = x_mean_b > x_mean_t * 2
         cond2 = x_std_t > x_std
         cond3 = low_lum_t > 0.1
@@ -540,3 +551,139 @@ class SceneSelector(nn.Module):
                 x_patch_list.append(x[..., j0:j1, i0:i1])
 
         return torch.cat(x_patch_list, dim=1)
+
+
+# -----------------------------------------------------------
+# Utilities
+# -----------------------------------------------------------
+
+def gradient(x):
+    dx = x[:, :, :, 1:] - x[:, :, :, :-1]
+    dy = x[:, :, 1:, :] - x[:, :, :-1, :]
+    return dx, dy
+
+
+def highlight_mask(vis, threshold=0.9, softness=15.0):
+    # vis in [-1,1] → convert to [0,1]
+    vis = (vis + 1) * 0.5
+    lum = 0.299 * vis[:, 0:1] + \
+          0.587 * vis[:, 1:2] + \
+          0.114 * vis[:, 2:3]
+    return torch.sigmoid((lum - threshold) * softness)
+
+
+# -----------------------------------------------------------
+# Cross Modal Attention Block
+# -----------------------------------------------------------
+
+class CrossModalAttention(nn.Module):
+    def __init__(self, dim):
+        super().__init__()
+        self.query = nn.Conv2d(dim, dim, 1)
+        self.key   = nn.Conv2d(dim, dim, 1)
+        self.value = nn.Conv2d(dim, dim, 1)
+        self.gamma = nn.Parameter(torch.zeros(1))
+
+    def forward(self, ir_feat, vis_feat):
+        Q = self.query(ir_feat)
+        K = self.key(vis_feat)
+        V = self.value(vis_feat)
+
+        attn = torch.softmax(
+            torch.sum(Q * K, dim=1, keepdim=True), dim=-1
+        )
+        out = ir_feat + self.gamma * attn * V
+        return out
+
+
+# -----------------------------------------------------------
+# Illumination Aware Fusion Network
+# -----------------------------------------------------------
+
+class IlluminationAwareFusion(nn.Module):
+    """
+    Unpaired illumination-aware fusion module.
+    Produces:
+        fake_ir, reflectance, illumination
+    """
+
+    def __init__(self, thermal_preprocessCfg: ThermalPreprocessConfig, input_channels=6, hidden_dim=256,
+                 n_enc_layers=4, dropout=0.25, n_downscaling=2):
+        super().__init__()
+        base_dim = hidden_dim // (2 ** n_downscaling)
+        # Encoder
+        enc1 = nn.Sequential(
+            nn.Conv2d(input_channels + 1, base_dim, 7, padding=3, padding_mode='reflect'),
+            nn.InstanceNorm2d(base_dim),
+            nn.ReLU(inplace=True)
+        )
+        self.enc = [enc1]
+        mult = 1
+        for i in range(n_downscaling):
+            mult = 2 ** (i + 1)
+            self.enc.append(nn.Sequential(
+                nn.Conv2d(base_dim * mult // 2, base_dim * mult, kernel_size=3, stride=2, padding=1),
+                nn.InstanceNorm2d(base_dim * mult),
+                nn.ReLU(inplace=True)
+            ))
+        self.enc = nn.Sequential(*self.enc)
+
+        # Cross modal attention at bottleneck
+        self.attn = CrossModalAttention(base_dim * mult)
+
+        # Decoder
+        self.dec = []
+        for i in range(n_downscaling):
+            mult = 2 ** (n_downscaling - i)
+            self.dec.append(nn.Sequential(
+                nn.ConvTranspose2d(base_dim * mult, base_dim * mult // 2, 4, stride=2, padding=1),
+                nn.InstanceNorm2d(base_dim * mult // 2),
+                nn.ReLU(inplace=True)
+            ))
+        self.dec = nn.Sequential(*self.dec)
+
+        # Dual heads
+        self.reflectance_head = nn.Sequential(
+            nn.Conv2d(base_dim, 1, 7, padding=3, padding_mode='reflect'),
+            nn.Tanh()
+        )
+
+        self.illumination_head = nn.Sequential(
+            nn.Conv2d(base_dim, 1, 7, padding=3, padding_mode='reflect'),
+            nn.Tanh()
+        )
+        self.spatial_aligner = get_wrapper('vis2ir')
+        self.thermal_preprocess = MonotonicThermalLUT(thermal_preprocessCfg.bins,
+                                                      thermal_preprocessCfg.scene)
+
+    # -------------------------------------------------------
+
+    def forward(self, ir, vis_night, align_first=True, **kwargs):
+        """
+        ir, vis_night ∈ [-1,1]
+        """
+
+        # Highlight awareness
+        ir = self.thermal_preprocess(ir, **kwargs)
+        if align_first:
+            vis_night = self.spatial_aligner(vis_night, ir).detach()
+        mask = highlight_mask(vis_night)
+
+        # Concatenate mask explicitly
+        x = torch.cat([ir, vis_night, mask], dim=1)
+
+        feat = self.enc(x)
+        # Split IR and VIS features for attention
+        ir_feat = feat
+        vis_feat = feat.detach()  # prevent visible highlight domination
+
+        bottleneck = self.attn(ir_feat, vis_feat)
+
+        decoded_feat = self.dec(bottleneck)
+
+        R = self.reflectance_head(decoded_feat) * 0.5 + 1
+        I = self.illumination_head(decoded_feat) * 0.5 + 1
+
+        fake_ir = R * I - 1.25  # combine reflectance and illumination, scale to [-1,1]
+
+        return fake_ir.repeat(1, 3, 1, 1), ir, vis_night, I, R, mask

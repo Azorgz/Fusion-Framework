@@ -5,7 +5,7 @@ from methods.Fusion.SaliencyMaskedFusion.model import SaliencyFuse
 
 def get_model(device, opt, **kwargs):
     device = device if device is not None else torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = SaliencyFuse(device=device)
+    model = SaliencyFuse(device, opt.inferSize)
     model.eval()
 
     class Model(torch.nn.Module):

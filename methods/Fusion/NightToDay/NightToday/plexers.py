@@ -1,6 +1,8 @@
 #### PLEXERS
 import os
+import socket
 from os.path import isfile
+from pathlib import Path
 from typing import Literal
 
 import torch
@@ -8,7 +10,7 @@ from torch import nn
 from torch.nn.functional import interpolate
 
 from . import GenConfig, TrainConfig, SegConfig, DiscrConfig
-from .Fusion import U_ResNetFusion
+from .Fusion import U_ResNetFusion, IlluminationAwareFusion
 from .LETNet import LETNet
 from .discriminators import NLayerDiscriminatorSN
 from .generators import ResnetGenEncoder, ResnetGenDecoder, ResnetBlock
@@ -141,8 +143,14 @@ class G_Plexer(Plexer):
                     (3 if opt.fusion_first else 6, opt.hidden_dim, opt.n_dec_layers, opt.dropout, opt.downscaling)]
         block_shared = ResnetBlock
         shenc_args = (opt.n_shared_layers, opt.hidden_dim, nn.BatchNorm2d)
-        fus = opt.fus if hasattr(opt, 'fus') else opt
-        self.fusion = U_ResNetFusion(hidden_dim=fus.hidden_dim, n_enc_layers=fus.n_enc_layers, dropout=fus.dropout,
+        fus = opt.fus
+        if not hasattr(fus, 'type'):
+            fus.type = 'IAware'
+        if fus.type == 'UResNet':
+            fusion_module = U_ResNetFusion
+        else:
+            fusion_module = IlluminationAwareFusion
+        self.fusion = fusion_module(hidden_dim=fus.hidden_dim, n_enc_layers=fus.n_enc_layers, dropout=fus.dropout,
                                      n_downscaling=fus.n_downscaling, thermal_preprocessCfg=fus.preprocess_thermal)
         self.encoders = [encoder(*enc_arg).train(False) for encoder, enc_arg in zip(encoders, enc_args)]
         self.decoders = [decoder(*dec_arg).train(False) for decoder, dec_arg in zip(decoders, dec_args)]
@@ -165,11 +173,16 @@ class G_Plexer(Plexer):
         assert from_ in self.names_domains, f"Unknown source domain: {from_}"
         return_im = False
         if len(args) and self.fusion_first:
-            x, ir, n = self.fusion(x, *args, **kwargs)
+            x, ir, n, *other = self.fusion(x, *args, **kwargs)
+            return_im = True
+        elif len(args) and not self.fusion_first:
+            x = torch.cat((x, *args), dim=1)
+            n = args[0]
             return_im = True
         self.ori_shape = x.shape
         scale = 2**self.opt.downscaling
-        input_size = self.input_size if isinstance(self.input_size, (list, tuple)) else (self.input_size, self.input_size)
+        # input_size = self.input_size if isinstance(self.input_size, (list, tuple)) else (self.input_size, self.input_size)
+        input_size = (-1, -1)
         if input_size[0] < 0:
             input_size = self.ori_shape[-2]//scale*scale, self.ori_shape[-1]//scale*scale
         else:
@@ -181,7 +194,7 @@ class G_Plexer(Plexer):
         output = self.encoders[self.names_domains[from_]](x)
         output = self.shared_encoder(output)
         if return_im:
-            return output, x, ir, n
+            return output, x, ir, n, *other
         return output
 
     def clean_IR(self, ir):
@@ -247,8 +260,13 @@ class S_Plexer(Plexer):
 
         self.networks = [model(*model_arg) for model_arg in model_args]
         self.names = [f'S_{dom}' for dom in self.names_domains]
-        # for net, name in zip(self.networks, self.names):
-        #     net.load_state_dict(torch.load(os.getcwd() + f'/checkpoints/{name}.pth'), strict=False)
+        BASE_DIR = Path(__file__).resolve().parent.parent
+        for net, name in zip(self.networks, self.names):
+            if 'laptop' in socket.gethostname():
+                path = BASE_DIR / 'checkpoints' / f'{name}.pth'
+            else:
+                path = f'/bettik/PROJECTS/pr-remote-sensing-1a/godeta/checkpoints/{name}.pth'
+            net.load_state_dict(torch.load(path), strict=False)
         self.to(self.device)
         self.init_optimizers(torch.optim.Adam, lr=training_cfg.lr_S, betas=training_cfg.betas_D)
         self.freeze = True

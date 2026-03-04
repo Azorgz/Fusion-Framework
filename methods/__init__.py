@@ -12,8 +12,6 @@ from torch import nn
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 from methods import Fusion, Wrapping, Wrapping_and_Fusion
-# Force initialization
-torch.cuda.init()
 
 # region Models and Methods
 MODELS = {'FUSION': Fusion.__methods__,
@@ -46,6 +44,9 @@ def import_model(method, opt, task=None, data: dict[str: DataLoader] = None, **k
                 self.fusion = fusion_model.eval()
                 self.method = wrapping_model.method + '_' + fusion_model.method
                 self.task = 'wrapping+fusion'
+                self.crop = opt.crop_after
+                self.resize = opt.resize_after
+                self.inferSize = opt.inferSize
 
             @torch.no_grad()
             def forward(self, img_vis, img_ir):
@@ -53,7 +54,14 @@ def import_model(method, opt, task=None, data: dict[str: DataLoader] = None, **k
                     img_ir = self.wrapping(img_vis, img_ir).match_shape(img_vis)
                 elif self.wrapping.model.direction == 'vis2ir':
                     img_vis = self.wrapping(img_vis, img_ir).match_shape(img_ir)
-                return ImageTensor(self.fusion(img_vis, img_ir))
+                img_vis = img_vis.crop(self.crop, mode='lrtb') if self.crop is not None else img_vis
+                img_ir = img_ir.crop(self.crop, mode='lrtb') if self.crop is not None else img_ir
+                if self.resize:
+                    shape = img_vis.shape[-2:]
+                    img_vis = img_vis.resize(self.inferSize)
+                    img_ir = img_ir.resize(self.inferSize)
+                fus = ImageTensor(self.fusion(img_vis, img_ir))
+                return fus if not self.resize else fus.resize(shape)
 
         return MasterModel(dual_model().eval(), data=data, opt=opt, device=device)
     else:
@@ -88,7 +96,7 @@ def import_model(method, opt, task=None, data: dict[str: DataLoader] = None, **k
                                 int(w * (max_size / max(h, w))))
                         img_vis = img_vis.resize(size)
                         img_ir = img_ir.resize(size)
-                return ImageTensor(self.model(img_vis, img_ir))
+                return ImageTensor(self.model(img_vis, img_ir)).resize((h, w))
 
             @torch.no_grad()
             def forward_wo_resize(self, img_vis, img_ir):
@@ -154,7 +162,7 @@ class MasterModel(nn.Module):
                     img_vis = img_vis.to(self.device)
                     img_ir = img_ir.to(self.device)
                     with torch.no_grad():
-                        fus = self.model(img_vis, img_ir).resize(*ori_size)
+                        fus = self(img_vis, img_ir)
                         fus.save(path, name=name_img, ext="png", depth=8)
 
     @torch.no_grad()
@@ -245,9 +253,9 @@ def fit_powers(memory_data):
     model = LinearRegression()
     model.fit(logy, logx)
 
-    b = float(model.coef_[0])
+    b = float(model.coef_.squeeze())
     ln_a = model.intercept_
-    a = float(np.exp(ln_a))
+    a = float(np.exp(ln_a).squeeze())
     return [a, b]
 
 

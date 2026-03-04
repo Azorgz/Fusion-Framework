@@ -189,6 +189,7 @@ dependencies:
   - zlib=1.2.11=h7b6447c_3
   - zstd=1.4.9=haebb681_0
   - pip:
+    - pyiqa
     - alabaster==0.7.12
     - babel==2.11.0
     - black==21.10b0

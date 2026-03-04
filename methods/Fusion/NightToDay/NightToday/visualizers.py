@@ -1,10 +1,13 @@
+import socket
+
 from ImagesCameras import ImageTensor
 from . import TrainConfig
 
 
 class Visualizer:
     def __init__(self, opt: TrainConfig):
-        self.save_dir = opt.visualize_dir
+        self.display = 'laptop' in socket.gethostname()
+        self.save_dir = opt.visualize_dir if self.display else '/silenus/PROJECTS/pr-remote-sensing-1a/godeta/training_visuals/'
         self.display_freq = opt.visualize_freq
         self.size = opt.input_size
         self.screen = None
@@ -17,12 +20,12 @@ class Visualizer:
 
     def display_current_results(self, visuals: dict[str, ImageTensor]):
         """Display the current visuals on screen."""
-        labels = ['real_D', 'real_T', 'real_N', 'fake_T', 'remapped_T', 'real_TN', 'rec_D', 'rec_T', 'fake_D']
+        labels = ['real_D', 'real_T', 'real_N', 'fake_T', 'remapped_T', 'fake_TN', 'rec_D', 'rec_T', 'fake_D']
         shape = visuals['real_D'].shape
         composition = None
         row = None
         for i, label in enumerate(labels):
-            image = visuals[label].RGB().cpu() if label in visuals else ImageTensor.rand(*shape) * 0
+            image = visuals[label].RGB().cpu() if label in labels else ImageTensor.rand(*shape) * 0
             if row is None:
                 row = image
             else:
@@ -33,9 +36,10 @@ class Visualizer:
                 else:
                     composition = composition.vstack(row)
                 row = None
-        if self.screen is not None:
+        if self.screen is not None and self.display:
             self.screen.update(composition)
-        else:
+        elif self.display:
             self.screen = composition.show(name=f'Learning on going...', opencv=True, asyncr=True)
+        return composition
 
 

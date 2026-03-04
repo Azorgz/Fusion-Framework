@@ -9,10 +9,11 @@ class DatasetBase(Dataset):
     """
     path_vis = ""
     path_ir = ""
+    is_aligned = True
 
     def __init__(self, opt):
         self.loadSize = opt.loadSize
-        self.resize = opt.resize
+        self.resize = opt.resize_before
         self.direction = opt.direction
         self.idx_ignore = []
         opt.sampling = opt.sampling if opt.sampling > 0 else 1
@@ -21,7 +22,7 @@ class DatasetBase(Dataset):
         self.image_ir = [os.path.join(self.path_ir, f) for idx, f
                          in enumerate(sorted(os.listdir(self.path_ir))) if idx % opt.sampling == 0]
         assert len(self.image_vis) == len(self.image_ir), "Number of visible and infrared images must be equal."
-        self.crop = opt.crop
+        self.crop = opt.crop_before if opt.crop_before else [0, 0, 0, 0]  # [left, right, top, bottom]
 
     def __len__(self):
         return len(self.image_vis) - len(self.idx_ignore)

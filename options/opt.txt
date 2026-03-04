@@ -1,13 +1,16 @@
 ------------ Options -------------
-crop: [0, 0, 0, 0]
-dataset: ['exp5']
+crop_after: [35, 105, 25, 95]
+crop_before: [0, 0, 0, 0]
+dataset: ['FLIR']
 device: cuda
 direction: vis2ir
-loadSize: (512, 512)
+inferSize: (512, 640)
+loadSize: (512, 640)
 load_16bits: False
-name: [('xcalib', 'nighttoday')]
+name: [('crossraft', 'nighttoday')]
 reset_result: True
-resize: True
+resize_after: True
+resize_before: True
 sampling: 1
 shuffle: False
 task: wrapping_and_fusion
