@@ -4,87 +4,776 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b187ec-df8e-4dd5-af4e-0dcbbaf93c68" name="Changes" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/datasets/Exp1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/Exp2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/Exp3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/Exp4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/Exp5.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/Exp6.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/Exp7.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_day.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_day_samples.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_night.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_night_samples.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_reg_day.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_reg_night.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_selection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_video_1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_video_2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_video_3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/FLIR_video_4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/LYNRED_day.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/LYNRED_day_samples.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/LYNRED_night.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/LYNRED_night_samples.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/LYNRED_night_train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/MSRS.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/RoadScene.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/methods/Fusion/Alpha_blending/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/EXP4/XCalib.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/LYNRED_NIGHT_TRAIN/XCalib.yaml" afterDir="false" />
+    <list default="true" id="15b187ec-df8e-4dd5-af4e-0dcbbaf93c68" name="Changes" comment="Bin update&#10;Dataset / methods...">
+      <change afterPath="$PROJECT_DIR$/fusion_framework/datasets/Exp8.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/datasets/LYNRED_detection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/datasets/M3FD_detection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/datasets/M3FD_fusion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/modules/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/assets/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/config/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/config/data/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/datasets/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage2/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage3/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/modules/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/metrics/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/metrics/cocoEval_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/metrics/metric_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fusion_framework/options/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/FusionMethods.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FusionMethods.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Analyze/Compute_metric.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analyze/YOLO_detection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Analyze/VideoMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analyze/VideoMaker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FusionMethods.yml" beforeDir="false" afterPath="$PROJECT_DIR$/FusionMethods.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Analyze/Compute_metrics.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Analyze/YOLO_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analyze/YOLO_detection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Profile_Methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/Profile_Methods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasets/DatasetBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/DatasetBase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasets/FLIR.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/FLIR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasets/LYNRED.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/.idea/MyTransform.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/DatasetBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/DatasetBase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/FLIR.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/FLIR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/LYNRED.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/LYNRED.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/crop_TF_in_src.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/crop_TF_in_src.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/Fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/Fusion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/NTIR2Day.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/NTIR2Day.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/configs/conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/configs/conf.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/discriminators.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/discriminators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/losses.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/losses.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/plexers.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/plexers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/utilities.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/visualizers.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/visualizers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/NightToDay/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/SaliencyMaskedFusion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/SaliencyMaskedFusion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/SaliencyMaskedFusion/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/SaliencyMaskedFusion/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Fusion/SaliencyMaskedFusion/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Fusion/SaliencyMaskedFusion/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/ProfilingResults.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/methods/ProfilingResults.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/LYNRED_EXP1/XCalib.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/EXP1/XCalib.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/LYNRED_EXP2/XCalib.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/EXP2/XCalib.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/LYNRED_EXP3/XCalib.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/EXP3/XCalib.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/LYNRED_EXP5/XCalib.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/EXP5/XCalib.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/LYNRED_EXP6/XCalib.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/EXP6/XCalib.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/LYNRED_EXP7/XCalib.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/EXP7/XCalib.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Wrapping/XCalib/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/ml_depth_pro/src/depth_pro.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/ml_depth_pro/src/depth_pro.egg-info/SOURCES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/options/opt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/options/opt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/options/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/options/options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Run.py" beforeDir="false" afterPath="$PROJECT_DIR$/Run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/DatasetBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/DatasetBase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/Exp1.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/Exp1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/Exp2.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/Exp2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/Exp3.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/Exp3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/Exp4.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/Exp4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/Exp5.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/Exp5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/Exp6.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/Exp6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/Exp7.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/Exp7.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_day.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_day.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_day_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_day_samples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_night.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_night.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_night_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_night_samples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_reg_day.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_reg_day.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_reg_night.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_reg_night.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_selection.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_selection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_video_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_video_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_video_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_video_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_video_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_video_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/FLIR_video_4.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/FLIR_video_4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/LYNRED_day.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/LYNRED_day.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/LYNRED_day_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/LYNRED_day_samples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/LYNRED_night.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/LYNRED_night.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/LYNRED_night_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/LYNRED_night_samples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/LYNRED_night_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/LYNRED_night_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/MSRS.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/MSRS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/RoadScene.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/RoadScene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/datasets/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/model/backbone/ml_depth_pro/src/depth_pro.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/model/backbone/ml_depth_pro/src/depth_pro.egg-info/SOURCES.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/model/cameras.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/model/cameras.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/options/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/options/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/options/depth/pro.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/options/depth/pro.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/options/loss/losses.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/options/loss/losses.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/options/mainConf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/options/mainConf.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Alpha_blending/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Alpha_blending/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/ckpts/fine_tuned_lut.npy" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/ckpts/fine_tuned_lut.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/ckpts/fine_tuned_lut_original.npy" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/ckpts/fine_tuned_lut_original.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/data/o_fusion_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/data/o_fusion_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/data/simple_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/data/simple_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/fine_tune_lut.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/fine_tune_lut.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/scripts/calculate.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/scripts/calculate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/scripts/loss_lut.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/scripts/loss_lut.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/test_lut.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/test_lut.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/LUT_Fuse/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/transforms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/Pre-training-process.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/Pre-training-process.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/connect_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/connect_net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/models_mae.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/models_mae.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/test_fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/test_fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/training.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/training.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/crop.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/crop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/datasets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/lars.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/lars.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/load_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/load_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/lr_decay.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/lr_decay.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/lr_sched.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/lr_sched.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/misc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/pos_embed.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/pos_embed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/test_save.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/test_save.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/test_save_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/test_save_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/MaeFuse/util/trans.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/trans.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/Diffusion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/Diffusion/diffusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/Diffusion/diffusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/Diffusion/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/Diffusion/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/Scheduler.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/Scheduler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/Detection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/Detection.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/MEF1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/MEF1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/MEF2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/MEF2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/MFF.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/MFF.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/MIF.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/MIF.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/Mask_Demo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/Mask_Demo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/Nir2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/Nir2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/Pol2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/Pol2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/Segment.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/Segment.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/VIF1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/VIF1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/VIF2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/VIF2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/VIF3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/VIF3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/conceptual.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/conceptual.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/assets/framework.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/assets/framework.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/get_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/get_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/loss/Myloss.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/loss/Myloss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/loss/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/loss/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/Mask-DiFuser/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/DatasetBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/Datasets/DatasetBase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/FLIR.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/Datasets/FLIR.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/LYNRED.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/Datasets/LYNRED.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/Datasets/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/augmentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/Datasets/augmentation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/Datasets/crop_TF_in_src.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/Datasets/crop_TF_in_src.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/.idea/CrossModalFlow.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/.idea/CrossModalFlow.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/flow_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/flow_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/losses.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/losses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/corr.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/corr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/datasets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/raft.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/raft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/update.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/LUT_Fuse/scripts/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/utils/augmentor.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/utils/augmentor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/utils/flow_viz.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/utils/flow_viz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/utils/frame_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/utils/frame_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/MaeFuse/util/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/basic_blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/basic_blocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/cross_raft.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/cross_raft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/standard_raft.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/standard_raft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/run_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/run_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/tf_args.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/tf_args.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/Fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/Fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/LETNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/LETNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/MultiResTransGAN/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/Mask-DiFuser/Diffusion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/MultiResTransGAN/decoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/MultiResTransGAN/decoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/MultiResTransGAN/encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/MultiResTransGAN/encoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/MultiResTransGAN/vit.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/MultiResTransGAN/vit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/NTIR2Day.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/NTIR2Day.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/configs/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/configs/conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/configs/conf.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/discriminators.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/discriminators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/generators.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/generators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/losses.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/losses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/modules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/plexers.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/plexers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/segmentors.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/segmentors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/ssim.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/ssim.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/utilities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/visualizers.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/visualizers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/NightToDay/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/.idea/PAIF.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/.idea/PAIF.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/TaskFusion_dataset2.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/TaskFusion_dataset2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/RAFT/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/attack/attack.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/attack/attack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/configs/voc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/configs/voc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/configs/voc_fusion.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/configs/voc_fusion.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/configs/voc_fusionrm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/configs/voc_fusionrm.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/configs/voc_methods.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/configs/voc_methods.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/configs/vocnas.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/configs/vocnas.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/core/EGFNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/core/EGFNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/core/Entropy.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/core/Entropy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/core/GMNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/core/GMNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/core/LASNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/core/LASNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/core/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/core/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/core/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/core/mix_transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/core/mix_transformer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/core/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/core/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/core/model_fusion_auto.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/core/model_fusion_auto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/core/segformer_head.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/core/segformer_head.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/fusion_model/AUIF.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/fusion_model/AUIF.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/fusion_model/BFFusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/fusion_model/BFFusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/fusion_model/DID.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/fusion_model/DID.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/fusion_model/Reconet.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/fusion_model/Reconet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/fusion_model/SDNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/fusion_model/SDNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/fusion_model/SeaFusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/fusion_model/SeaFusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/fusion_model/U2Fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/fusion_model/U2Fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/fusion_model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/CrossRAFT/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/operations_m.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/operations_m.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/pytorch_ssim/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/pytorch_ssim/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/robust_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/robust_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/test_original.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/test_original.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/util/MF_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/util/MF_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/util/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/util/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/util/augmentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/util/augmentation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/util/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/util/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/util/util2.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/util/util2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/MultiResTransGAN/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/utils/eval_seg.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/utils/eval_seg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/PAIF/utils/optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/utils/optimizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/SAM/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/SAM/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/SAM/build_sam.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/SAM/build_sam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/SAM/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/SAM/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/SAM/image_encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/SAM/image_encoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/SAM/image_encoder_ad.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/SAM/image_encoder_ad.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/SAM/predictor.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/SAM/predictor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/SAM/sam.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/SAM/sam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/SAM/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/SAM/transforms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/assets/fig1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/assets/fig1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/assets/workflow1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/assets/workflow1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/dataset/dataset_teacher_FMB.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/dataset/dataset_teacher_FMB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/dataset/dataset_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/dataset/dataset_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/model_main/attention.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/model_main/attention.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/model_main/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/model_main/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/model_main/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/model_main/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/model_main/segment_loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/model_main/segment_loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/model_sub/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/model_sub/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/model_sub/losses.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/model_sub/losses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/model_sub/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/model_sub/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/automatic_mask_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/automatic_mask_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/build_sam.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/build_sam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/modeling/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/modeling/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/modeling/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/modeling/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/modeling/image_encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/modeling/image_encoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/modeling/mask_decoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/modeling/mask_decoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/modeling/prompt_encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/modeling/prompt_encoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/modeling/sam.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/modeling/sam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/modeling/transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/modeling/transformer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/predictor.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/predictor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/utils/amg.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/utils/amg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/utils/onnx.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/utils/onnx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/segment_anything/utils/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/segment_anything/utils/transforms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/seem/davitd3_unicl_lang_v1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/seem/davitd3_unicl_lang_v1.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/seem/davitd5_unicl_lang_v1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/seem/davitd5_unicl_lang_v1.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/seem/focall_unicl_lang_demo.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/seem/focall_unicl_lang_demo.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/seem/focall_unicl_lang_v0.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/seem/focall_unicl_lang_v0.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/seem/focall_unicl_lang_v1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/seem/focall_unicl_lang_v1.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/seem/focalt_unicl_lang_demo.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/seem/focalt_unicl_lang_demo.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/seem/focalt_unicl_lang_v0.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/seem/focalt_unicl_lang_v0.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/seem/focalt_unicl_lang_v1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/seem/focalt_unicl_lang_v1.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/seem/samvitb_unicl_lang_v1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/seem/samvitb_unicl_lang_v1.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/seem/samvitl_unicl_lang_v1.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/seem/samvitl_unicl_lang_v1.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/xdecoder/davitd3_unicl_lang.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/xdecoder/davitd3_unicl_lang.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/xdecoder/davitd5_unicl_lang.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/xdecoder/davitd5_unicl_lang.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/xdecoder/focall_unicl_lang.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/xdecoder/focall_unicl_lang.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/xdecoder/focalt_unicl_lang.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/xdecoder/focalt_unicl_lang.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/xdecoder/xdecoder_focall_lang.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/xdecoder/xdecoder_focall_lang.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/configs/xdecoder/xdecoder_focalt_lang.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/configs/xdecoder/xdecoder_focalt_lang.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/infer_captioning.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/infer_captioning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/infer_instseg.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/infer_instseg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/infer_panoseg.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/infer_panoseg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/infer_refseg.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/infer_refseg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/infer_region_retrieval.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/infer_region_retrieval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/infer_semseg.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/infer_semseg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/local_clip_model/merges.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/local_clip_model/merges.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/local_clip_model/special_tokens_map.json" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/local_clip_model/special_tokens_map.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/local_clip_model/tokenizer.json" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/local_clip_model/tokenizer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/local_clip_model/tokenizer_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/local_clip_model/tokenizer_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/local_clip_model/vocab.json" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/local_clip_model/vocab.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/BaseModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/BaseModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/architectures/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/architectures/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/architectures/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/architectures/build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/architectures/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/architectures/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/architectures/seem_model_demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/architectures/seem_model_demo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/architectures/seem_model_v0.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/architectures/seem_model_v0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/architectures/seem_model_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/architectures/seem_model_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/architectures/xdecoder_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/architectures/xdecoder_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/backbone/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/backbone/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/backbone/backbone.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/backbone/backbone.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/backbone/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/backbone/build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/backbone/focal.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/backbone/focal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/backbone/focal_dw.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/backbone/focal_dw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/backbone/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/backbone/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/decoder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/decoder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/decoder/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/decoder/build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/decoder/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/decoder/modules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/decoder/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/decoder/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/decoder/xdecoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/decoder/xdecoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/encoder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/encoder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/encoder/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/encoder/build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/encoder/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/encoder/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/encoder/transformer_encoder_fpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/encoder/transformer_encoder_fpn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/transformer_blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/transformer_blocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/body/xdecoder_head.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/body/xdecoder_head.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/interface/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/interface/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/interface/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/interface/build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/interface/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/interface/modules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/interface/prototype/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/NightToday/configs/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/interface/prototype/attention_data_struct_seemdemo.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/interface/prototype/attention_data_struct_seemdemo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/interface/prototype/attention_data_struct_seemv0.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/interface/prototype/attention_data_struct_seemv0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/interface/prototype/attention_data_struct_seemv1.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/interface/prototype/attention_data_struct_seemv1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/interface/seem_demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/interface/seem_demo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/interface/seem_v0.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/interface/seem_v0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/interface/seem_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/interface/seem_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/interface/xdecoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/interface/xdecoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/language/LangEncoder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/language/LangEncoder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/language/LangEncoder/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/language/LangEncoder/build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/language/LangEncoder/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/language/LangEncoder/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/language/LangEncoder/transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/language/LangEncoder/transformer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/language/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/language/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/language/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/language/build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/language/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/language/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/language/misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/language/misc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/language/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/language/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/language/vlpencoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/language/vlpencoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/modules/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/modules/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/modules/attention.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/modules/attention.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/modules/criterion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/modules/criterion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/modules/matcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/modules/matcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/modules/point_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/modules/point_features.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/modules/position_encoding.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/modules/position_encoding.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/modules/postprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/modules/postprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/utils/attention.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/utils/attention.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/utils/box_ops.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/utils/box_ops.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/utils/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/utils/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/utils/interactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/utils/interactive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/utils/misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/utils/misc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/backbone.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/backbone.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/davit.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/davit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/focal.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/focal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/focal_dw.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/focal_dw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/vit.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/backbone/vit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/1" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/functions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/functions/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/functions/ms_deform_attn_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/functions/ms_deform_attn_func.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/make.sh" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/make.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/modules/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/modules/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/modules/ms_deform_attn.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/modules/ms_deform_attn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/cpu/ms_deform_attn_cpu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/cpu/ms_deform_attn_cpu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/cpu/ms_deform_attn_cpu.h" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/cpu/ms_deform_attn_cpu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/cuda/ms_deform_attn_cuda.cu" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/cuda/ms_deform_attn_cuda.cu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/cuda/ms_deform_attn_cuda.h" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/cuda/ms_deform_attn_cuda.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/cuda/ms_deform_im2col_cuda.cuh" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/cuda/ms_deform_im2col_cuda.cuh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/ms_deform_attn.h" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/ms_deform_attn.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/vision.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/src/vision.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/transformer_blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/transformer_blocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/transformer_encoder_deform.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/transformer_encoder_deform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/transformer_encoder_fpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/transformer_encoder_fpn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/utils/Config.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/utils/Config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/utils/arguments.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/utils/arguments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/utils/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/utils/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/utils/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/utils/distributed.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/utils/distributed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/utils/misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/utils/misc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/utils/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/utils/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/utils/prompt_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/utils/prompt_engineering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SAGE/xdecoder/utils/visualizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/utils/visualizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SaliencyMaskedFusion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SaliencyMaskedFusion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SaliencyMaskedFusion/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SaliencyMaskedFusion/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SaliencyMaskedFusion/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SaliencyMaskedFusion/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SaliencyMaskedFusion/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SaliencyMaskedFusion/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/AG_evaluation.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/AG_evaluation.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/CC_evaluation.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/CC_evaluation.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/CompileCPU.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/CompileCPU.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/CompileGPU.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/CompileGPU.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/Hab.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/Hab.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/MI_evaluation.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/MI_evaluation.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/MSE_evaluation.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/MSE_evaluation.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/PSNR_evaluation.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/PSNR_evaluation.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/RGB2Gray.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/RGB2Gray.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/SD_evaluation.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/SD_evaluation.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/SF_evaluation.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/SF_evaluation.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/Y2RGB.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/Y2RGB.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/YCbCr2rgb.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/YCbCr2rgb.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/analysis_Qabf.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/analysis_Qabf.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/analysis_Reference.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/analysis_Reference.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/analysis_SCD.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/analysis_SCD.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/analysis_fmi.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/analysis_fmi.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/analysis_ms_ssim.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/analysis_ms_ssim.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/analysis_nabf.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/analysis_nabf.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/difference.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/difference.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/entropy_fusion.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/entropy_fusion.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/image_process.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/image_process.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/mef_ssim.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/mef_ssim.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/per_extn_im_fn.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/per_extn_im_fn.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/plot_metrics.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/plot_metrics.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/resize_image.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/resize_image.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/sobel_fn.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/sobel_fn.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/test_evaluation.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/test_evaluation.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/Evaluation/vifp_mscale.m" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/Evaluation/vifp_mscale.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/FusionNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/FusionNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/MSRS.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/MSRS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/TaskFusion_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/TaskFusion_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/cityscapes.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/cityscapes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/cityscapes_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/cityscapes_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/datasets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/model_TII.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/model_TII.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/optimizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/resnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/transform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/SeAFusion/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SeAFusion/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/.github/workflows/sync.yml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/.github/workflows/sync.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/CITATION.cff" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/CITATION.cff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/assets/first_figure.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/assets/first_figure.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/assets/preview.gif" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/assets/preview.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/assets/sample/s1/ir/ROAD_040.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/assets/sample/s1/ir/ROAD_040.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/assets/sample/s1/ir/TNO_028.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/assets/sample/s1/ir/TNO_028.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/assets/sample/s1/meta/pred.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/assets/sample/s1/meta/pred.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/assets/sample/s1/vi/ROAD_040.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/assets/sample/s1/vi/ROAD_040.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/assets/sample/s1/vi/TNO_028.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/assets/sample/s1/vi/TNO_028.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/config/default.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/config/default.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/config/exp/i-tardal-dt.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/config/exp/i-tardal-dt.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/config/exp/t-tardal-ct.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/config/exp/t-tardal-ct.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/config/official/colab.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/config/official/colab.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/config/official/infer/tardal-ct.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/config/official/infer/tardal-ct.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/config/official/infer/tardal-dt.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/config/official/infer/tardal-dt.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/config/official/infer/tardal-tt.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/config/official/infer/tardal-tt.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/config/official/train/tardal-ct.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/config/official/train/tardal-ct.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/config/official/train/tardal-dt.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/config/official/train/tardal-dt.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/config/official/train/tardal-tt.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/config/official/train/tardal-tt.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/data/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/data/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/functions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/functions/div_loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/functions/div_loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/functions/get_param_groups.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/functions/get_param_groups.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/infer.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/infer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/loader/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/loader/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/loader/m3fd.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/loader/m3fd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/loader/roadscene.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/loader/roadscene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/loader/tno.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/loader/tno.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/loader/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/fusion_model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/loader/utils/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/loader/utils/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/loader/utils/reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/loader/utils/reader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/dataset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/experimental.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/experimental.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/anchors.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/anchors.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov3-spp.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov3-spp.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov3-tiny.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov3-tiny.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov3.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov3.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-bifpn.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-bifpn.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-fpn.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-fpn.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-p2.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-p2.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-p34.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-p34.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-p6.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-p6.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-p7.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-p7.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-panet.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5-panet.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5l6.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5l6.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5m6.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5m6.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5n6.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5n6.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5s-ghost.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5s-ghost.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5s-transformer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5s-transformer.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5s6.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5s6.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/hub/yolov5x6.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/hub/yolov5x6.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/tf.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/tf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/yolo.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/yolo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/yolov5l.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/yolov5l.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/yolov5m.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/yolov5m.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/yolov5n.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/yolov5n.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/yolov5s.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/yolov5s.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/models/yolov5x.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/yolov5x.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/activations.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/activations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/augmentations.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/augmentations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/autoanchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/autoanchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/autobatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/autobatch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/aws/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/model_main/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/aws/mime.sh" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/aws/mime.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/aws/resume.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/aws/resume.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/aws/userdata.sh" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/aws/userdata.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/benchmarks.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/benchmarks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/callbacks.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/callbacks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/dataloaders.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/dataloaders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/docker/Dockerfile-arm64" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/docker/Dockerfile-arm64" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/docker/Dockerfile-cpu" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/docker/Dockerfile-cpu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/downloads.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/downloads.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/flask_rest_api/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/flask_rest_api/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/flask_rest_api/example_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/flask_rest_api/example_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/flask_rest_api/restapi.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/flask_rest_api/restapi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/general.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/general.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/google_app_engine/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/google_app_engine/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/google_app_engine/additional_requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/google_app_engine/additional_requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/google_app_engine/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/google_app_engine/app.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/loggers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/loggers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/model_sub/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/log_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/log_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/sweep.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/sweep.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/sweep.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/sweep.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/wandb_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/wandb_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/plots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/detect/utils/torch_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/torch_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/fuse/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/fuse/discriminator.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/fuse/discriminator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/fuse/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/fuse/generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/saliency/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/interface/prototype/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/module/saliency/u2net.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/saliency/u2net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/pipeline/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/pipeline/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/pipeline/detect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/pipeline/fuse.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/pipeline/fuse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/pipeline/iqa.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/pipeline/iqa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/pipeline/saliency.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/pipeline/saliency.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/pipeline/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/pipeline/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/scripts/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/scripts/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/scripts/infer_f.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/scripts/infer_f.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/scripts/infer_fd.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/scripts/infer_fd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/scripts/train_f.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/scripts/train_f.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/scripts/train_fd.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/scripts/train_fd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/scripts/utils/smart_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/scripts/utils/smart_optimizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/tools/choose_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/tools/choose_images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/tools/convert_to_png.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/tools/convert_to_png.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/tools/data_preview.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/tools/data_preview.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/tools/dict_to_device.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/tools/dict_to_device.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/tools/environment_probe.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/tools/environment_probe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/tools/generate_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/tools/generate_mask.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/tools/scenario_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/tools/scenario_reader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TarDAL/tutorial.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/tutorial.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/data/prompt_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/data/prompt_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/data/simple_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/data/simple_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/model/Text_IF_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/model/Text_IF_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/scripts/losses.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/scripts/losses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/scripts/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/scripts/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/test_from_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/test_from_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/test_imgs/Infrared/FLIR_01932.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/test_imgs/Infrared/FLIR_01932.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/test_imgs/Visible/FLIR_01932.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/test_imgs/Visible/FLIR_01932.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/train_fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/train_fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/TextIF/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/transforms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Fusion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/ProfilingResults.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/ProfilingResults.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/.idea/CrossModalFlow.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/.idea/CrossModalFlow.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/flow_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/flow_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/losses.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/losses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/RAFT/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/SAGE/xdecoder/modeling/vision/encoder/ops/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/RAFT/corr.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/RAFT/corr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/RAFT/datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/RAFT/datasets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/RAFT/extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/RAFT/extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/RAFT/raft.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/RAFT/raft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/RAFT/update.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/RAFT/update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/RAFT/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/functions/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/RAFT/utils/augmentor.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/RAFT/utils/augmentor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/RAFT/utils/flow_viz.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/RAFT/utils/flow_viz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/RAFT/utils/frame_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/RAFT/utils/frame_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/RAFT/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/RAFT/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/loader/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/basic_blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/basic_blocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/cross_raft.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/cross_raft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/models/standard_raft.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/standard_raft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/run_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/run_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/tf_args.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/tf_args.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/CrossRAFT/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/.idea/PGMR.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/.idea/PGMR.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/code_pgmr/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/code_pgmr/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/code_pgmr/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/code_pgmr/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/code_pgmr/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/code_pgmr/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/code_pgmr/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/code_pgmr/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/code_pgmr/modules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/code_pgmr/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/code_pgmr/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/enhance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/enhance/swinir_arch.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/enhance/swinir_arch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/figure/framework.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/figure/framework.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/PGMR/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/FLIR_video_1/XCalib.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/Depth_anything/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/aws/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/Depth_anything/metric_depth/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/flask_rest_api/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/Depth_anything/metric_depth/zoedepth/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/detect/utils/loggers/wandb/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/Depth_anything/metric_depth/zoedepth/models/base_models/dpt_dinov2/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/fuse/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/Depth_anything/metric_depth/zoedepth/models/layers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/module/saliency/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/Depth_anything/metric_depth/zoedepth/trainers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/pipeline/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/Depth_anything/torchhub/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/scripts/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/Depth_anything/torchhub/facebookresearch_dinov2_main/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TarDAL/tools/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/Depth_anything/torchhub/facebookresearch_dinov2_main/dinov2/run/eval/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/Depth_anything/torchhub/facebookresearch_dinov2_main/dinov2/run/train/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/flow/CrossModalFlow/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Fusion/TextIF/scripts/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/flow/CrossModalFlow/models/RAFT/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/RAFT/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/flow/CrossModalFlow/models/RAFT/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/RAFT/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/flow/CrossModalFlow/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/CrossRAFT/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/XCalib/model/flow/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/code_pgmr/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/modules/FusionNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/modules/FusionNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/modules/RegNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/modules/RegNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/modules/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping/PGMR/enhance/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/modules/layers_fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/modules/layers_fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/modules/layers_reg.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/modules/layers_reg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/modules/losses.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/modules/losses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/train_Fu.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/train_Fu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/train_Reg.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/train_Reg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/utils/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/utils/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/utils/saver.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/utils/saver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/C2RF/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/C2RF/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/assets/data_transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/assets/data_transform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/inference_one_pair_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/inference_one_pair_images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/model/SemLA.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/model/SemLA.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/model/fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/model/fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/model/reg.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/model/reg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/model/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/model/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/Extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/Extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/IVS_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/IVS_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/Loss_stage1.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/Loss_stage1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/reg_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/reg_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/config/data/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/config/data/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/config/data/megadepth_test_1500.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/config/data/megadepth_test_1500.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/config/data/scannet_test_1500.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/config/data/scannet_test_1500.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/config/defaultmf.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/config/defaultmf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/coarse_matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/coarse_matching.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/fine_matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/fine_matching.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/fine_preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/fine_preprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/match_LA_large.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/match_LA_large.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/match_LA_lite.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/match_LA_lite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/match_SEA_large.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/match_SEA_large.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/match_SEA_lite.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/backbone/match_SEA_lite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/datasets/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/datasets/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/datasets/megadepth.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/datasets/megadepth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/datasets/sampler.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/datasets/sampler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/datasets/scannet.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/datasets/scannet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/lightning_loftr.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/lightning_loftr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/matchformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/matchformer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/augment.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/augment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/comm.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/comm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/dataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/misc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/profiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/teacher/model/utils/profiler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/train_stage1.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/train_stage1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage1/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage1/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage2/Loss_stage2.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage2/Loss_stage2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage2/Reg.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage2/Reg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage2/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage2/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage2/train_stage2.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage2/train_stage2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage2/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage2/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage3/Fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage3/Fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage3/Loss_stage3.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage3/Loss_stage3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage3/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage3/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage3/train_stage3.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage3/train_stage3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/train_stage3/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SemLA/train_stage3/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/Fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/Fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/fullevaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/fullevaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/modules/IRNN_Backward_cuda.cu" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/modules/IRNN_Backward_cuda.cu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/modules/IRNN_Forward_cuda.cu" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/modules/IRNN_Forward_cuda.cu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/modules/TII.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/modules/TII.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/modules/irnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/modules/irnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/modules/layers.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/modules/layers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/modules/losses.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/modules/losses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/modules/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/modules/modules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/utils/cityscapes_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/utils/cityscapes_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/utils/fullevaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/utils/fullevaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/utils/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/utils/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/utils/saver.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/utils/saver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/SuperFusion/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/SuperFusion/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/Wrapping_and_Fusion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/Wrapping_and_Fusion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/methods/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/options/opt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/options/opt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/options/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/fusion_framework/options/options.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,8 +823,9 @@
     &quot;Python.Profile_Methods.executor&quot;: &quot;Run&quot;,
     &quot;Python.Run.executor&quot;: &quot;Run&quot;,
     &quot;Python.VideoMaker.executor&quot;: &quot;Run&quot;,
-    &quot;Python.YOLO_detection.executor&quot;: &quot;Run&quot;,
+    &quot;Python.YOLO_detection.executor&quot;: &quot;Debug&quot;,
     &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cocoEval_model.executor&quot;: &quot;Run&quot;,
     &quot;Python.dummy (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.dummy.executor&quot;: &quot;Run&quot;,
     &quot;Python.options.executor&quot;: &quot;Run&quot;,
@@ -147,7 +837,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/godeta/PycharmProjects/FusionMethods/methods/Fusion/NightToDay/NightToday/CrossRAFT&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/godeta/PycharmProjects/FusionMethods/results/NightToDay/FLIR&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;PyConsoleConfigurable.Python Console&quot;
   }
 }</component>
@@ -161,43 +851,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/methods/Fusion/NightToDay/NightToday/CrossRAFT" />
-      <recent name="$PROJECT_DIR$/methods/Fusion/NightToDay/checkpoints" />
-      <recent name="$PROJECT_DIR$/methods/Fusion/NightToDay" />
-      <recent name="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/LYNRED_NIGHT_TRAIN" />
-      <recent name="$PROJECT_DIR$/methods/Wrapping/XCalib/XCalib/EXP4" />
+      <recent name="$PROJECT_DIR$/results/NightToDay/FLIR" />
+      <recent name="$PROJECT_DIR$/fusion_framework/methods/Fusion/NightToDay/checkpoints" />
+      <recent name="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/options" />
+      <recent name="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/model/flow/CrossModalFlow" />
+      <recent name="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/model/backbone/ml_depth_pro" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Analyze" />
-      <recent name="$PROJECT_DIR$/methods/Fusion" />
-      <recent name="$PROJECT_DIR$/methods/Wrapping" />
-      <recent name="$PROJECT_DIR$/methods/Wrapping/XCalib/model/flow/CrossModalFlow" />
-      <recent name="$PROJECT_DIR$/methods/Wrapping/XCalib/model/backbone/ml_depth_pro" />
+      <recent name="$PROJECT_DIR$/results/NightToDay" />
+      <recent name="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/outputs/calibrations" />
+      <recent name="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/outputs/XCalib" />
+      <recent name="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/outputs/FLIR_video_1" />
+      <recent name="$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/outputs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Run">
-    <configuration name="Profile_Methods" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="FusionMethods" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Profile_Methods.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.test">
     <configuration name="Run" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FusionMethods" />
       <option name="ENV_FILES" value="" />
@@ -265,7 +933,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="options" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="cocoEval_model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FusionMethods" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -274,11 +942,33 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/options" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/fusion_framework/metrics" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/options/options.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fusion_framework/metrics/cocoEval_model.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FusionMethods" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -288,19 +978,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Profile_Methods" />
+      <item itemvalue="Python.cocoEval_model" />
+      <item itemvalue="Python.test" />
       <item itemvalue="Python.Run" />
       <item itemvalue="Python.VideoMaker" />
       <item itemvalue="Python.YOLO_detection" />
-      <item itemvalue="Python.options" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.Run" />
-        <item itemvalue="Python.VideoMaker" />
+        <item itemvalue="Python.cocoEval_model" />
         <item itemvalue="Python.YOLO_detection" />
-        <item itemvalue="Python.Profile_Methods" />
-        <item itemvalue="Python.options" />
+        <item itemvalue="Python.VideoMaker" />
       </list>
     </recent_temporary>
   </component>
@@ -336,7 +1026,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771426856727</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Bin update&#10;Dataset / methods...">
+      <option name="closed" value="true" />
+      <created>1772636126615</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1772636126615</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -368,7 +1066,8 @@
       <path value="$PROJECT_DIR$/methods/Wrapping_and_Fusion" />
     </ignored-roots>
     <MESSAGE value="First commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+    <MESSAGE value="Bin update&#10;Dataset / methods..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Bin update&#10;Dataset / methods..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -384,7 +1083,7 @@
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/methods/Fusion/PAIF/robust_test.py</url>
+          <url>file://$PROJECT_DIR$/fusion_framework/methods/Fusion/PAIF/robust_test.py</url>
           <line>243</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
@@ -394,14 +1093,19 @@
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/methods/Wrapping_and_Fusion/SemLA/__init__.py</url>
-          <line>51</line>
-          <option name="timeStamp" value="79" />
+          <url>file://$PROJECT_DIR$/fusion_framework/methods/Wrapping/XCalib/model/cameras.py</url>
+          <line>142</line>
+          <option name="timeStamp" value="214" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/methods/Wrapping/XCalib/model/cameras.py</url>
-          <line>128</line>
-          <option name="timeStamp" value="164" />
+          <url>file://$USER_HOME$/miniforge3/envs/Fusion/lib/python3.11/site-packages/ImagesCameras/Image/Image.py</url>
+          <line>405</line>
+          <option name="timeStamp" value="220" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/fusion_framework/methods/__init__.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="225" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,8 +1,8 @@
 import os
 import torch
 import yaml
-from datasets import get_dataloaders
-from methods import benchmark_model
+from fusion_framework.datasets import get_dataloaders
+from fusion_framework.methods import benchmark_model
 
 
 def ProfileMethods(opt):

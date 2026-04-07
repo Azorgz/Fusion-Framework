@@ -1,0 +1,21 @@
+------------ Options -------------
+crop_after: [0, 0, 0, 0]
+crop_before: [0, 0, 0, 0]
+crop_common_roi: True
+dataset: ['Exp_selection']
+device: cuda
+direction: ir2vis
+inferSize: (512, 512)
+loadSize: (480, 640)
+load_16bits: False
+metrics: all
+name: ['nighttoday', 'textif', 'saliencymaskedfusion', 'alpha_blending']
+reset_result: True
+resize_infer: False
+resize_load: False
+resize_save: True
+sampling: 1
+sequence: 0
+shuffle: False
+task: fusion
+-------------- End ----------------
