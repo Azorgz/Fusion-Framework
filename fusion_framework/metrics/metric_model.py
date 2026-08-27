@@ -11,10 +11,10 @@ from torch import isfinite
 
 
 class MetricModel:
-    def __init__(self, metrics: [str], device: torch.device, path: Path | str):
+    def __init__(self, metrics: [str], device: torch.device, path: Path | str | None = None):
         self.metrics = {}
         self.device = device
-        self.path = Path(path)
+        self.path = Path(path) if path is not None else Path.cwd() / "results/Metrics"
         if not self.path.exists():
             self.path.mkdir(parents=True, exist_ok=True)
         if metrics == 'all':
@@ -34,31 +34,49 @@ class MetricModel:
     def _reinit_metrics(self):
         self.metrics = {n: METRICS_DICT[n.lower()](self.device) for n in self.metrics.keys()}
 
-    def _compute_metrics(self, ir: torch.tensor, vis: torch.tensor, fus: torch.tensor):
+    def _compute_all_metrics(self,
+                             ref: torch.tensor = None,
+                             ref2: torch.tensor = None,
+                             test: torch.tensor = None,
+                             ):
         name = ""
         for name, metric in self.metrics.items():
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")
                 if metric.max_arg == 3:
-                    result = metric(ir, vis, fus)
+                    result = metric(ref, ref2, test)
                 elif metric.max_arg == 2:
-                    result = metric(ir, vis)
+                    result = metric(ref, test)
                 else:
-                    result = metric(fus)
+                    result = metric(test)
                 if result is not None and isfinite(result) and not torch.isnan(result):
                     self.results[name] += result.detach().cpu().numpy()
                     self.count[name] += 1
         torch.cuda.empty_cache()
+        if self.count[name] % 100 == 0:
+            self._reinit_metrics()
+
+    def compute_2args_metrics(self, test: torch.tensor, ref: torch.tensor):
+        name = ""
+        for name, metric in self.metrics.items():
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                if metric.min_arg <= 2 <= metric.max_arg:
+                    result = metric(test, ref)
+                    if result is not None and isfinite(result) and not torch.isnan(result):
+                        self.results[name] += result.detach().cpu().numpy()
+                        self.count[name] += 1
+        torch.cuda.empty_cache()
         if self.count[name] % 200 == 0:
             self._reinit_metrics()
 
-    def __call__(self, vis, ir, fus):
-        if len(self.metrics) == 0:
+    def __call__(self, ref=None, ref2=None, pred=None):
+        if len(self.metrics) == 0 or (ref is None and ref2 is None and pred is None):
             return
-        fus_img = ImageTensor(fus).RGB().to(self.device) if fus is not None else None
-        ir_img = ImageTensor(ir).GRAY().match_shape(fus_img).to(self.device) if ir is not None else None
-        vis_img = ImageTensor(vis).match_shape(fus_img).to(self.device) if vis is not None else None
-        self._compute_metrics(ir_img, vis_img, fus_img)
+        pred_img = ImageTensor(pred).RGB().to(self.device) if pred is not None else None
+        ref2_img = ImageTensor(ref2).RGB('gray').match_shape(pred_img).to(self.device) if ref2 is not None else None
+        ref_img = ImageTensor(ref).match_shape(pred_img).to(self.device) if ref is not None else None
+        self._compute_all_metrics(ref_img, ref2_img, pred_img)
 
     def save_results(self, method: str, dataset: str):
         """

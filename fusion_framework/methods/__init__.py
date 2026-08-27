@@ -51,6 +51,7 @@ def import_model(method, opt, task=None, data: dict[str: DataLoader] = None, pat
                 self.crop = opt.crop_after if not opt.crop_common_roi else 'auto'
                 self.resize = opt.resize_infer
                 self.inferSize = opt.inferSize
+                self.inverse_ir = hasattr(self.fusion, 'inverse_ir') and self.fusion.inverse_ir
 
             @torch.no_grad()
             def forward(self, img_vis, img_ir):
@@ -99,6 +100,7 @@ def import_model(method, opt, task=None, data: dict[str: DataLoader] = None, pat
                 else:
                     self.max_size = None
                 self.device = torch.device(device)
+                self.inverse_ir = hasattr(self.model, 'inverse_ir') and self.model.inverse_ir
 
             @torch.no_grad()
             def forward(self, img_vis, img_ir):
@@ -157,7 +159,9 @@ def import_model(method, opt, task=None, data: dict[str: DataLoader] = None, pat
 
             @torch.no_grad()
             def forward_wo_resize(self, img_vis, img_ir):
-                return ImageTensor(self.model(img_vis, img_ir))
+                out, img_vis, img_ir = self.model(img_vis, img_ir)
+                out = ImageTensor(out)
+                return out, img_vis, img_ir
 
         # PURE FUSION METHODS
         if method in FUSION_METHODS:
@@ -194,7 +198,7 @@ class MasterModel(nn.Module):
         super().__init__()
         self.task = model.task
         self.model = model
-        self.metrics = MetricModel(opt.metrics, device, path_result + "/Metrics/")
+        self.metrics = MetricModel(opt.metrics, device)
         self.train(model.training)
         self.method = model.method
         self.path_result = path_result + self.method
@@ -222,7 +226,11 @@ class MasterModel(nn.Module):
                 else:
                     self.model.wrapping.model.fit_to_data(dataloader)
             self.metrics._init_results()
-            for img_vis, img_ir, ori_size in tqdm(dataloader, desc=f"Running {self.method.replace('_', ' ')} on dataset {dataset_name}"):
+            for *imgs, ori_size in tqdm(dataloader, desc=f"Running {self.method.replace('_', ' ')} on dataset {dataset_name}"):
+                if len(imgs) == 3:
+                    img_vis, img_ir, other = imgs
+                else:
+                    img_vis, img_ir = imgs
                 if img_vis is not None:
                     name_img = img_vis.name
                     img_vis = img_vis.to(self.device)
@@ -230,7 +238,10 @@ class MasterModel(nn.Module):
                     with torch.no_grad():
                         if self.task == 'wrapping':
                             img_vis, img_ir = self(img_vis, img_ir)
-                            ImageTensor(img_vis).save(path + '/vis', name=name_img, ext="png", depth=8)
+                            if self.resize:
+                                img_vis = ImageTensor(img_vis).resize(ori_size[0])
+                                img_ir = ImageTensor(img_ir).resize(ori_size[0])
+                            # ImageTensor(img_vis).save(path + '/vis', name=name_img, ext="png", depth=8)
                             ImageTensor(img_ir).GRAY().save(path + '/ir', name=name_img, ext="png", depth=8)
                             # self.metrics(vis=img_vis, ir=img_ir, fus=None)
                         else:
@@ -240,6 +251,8 @@ class MasterModel(nn.Module):
                             else:
                                 fus = ImageTensor(fus)
                             fus.save(path, name=name_img, ext="png", depth=8)
+                            if self.model.inverse_ir:
+                                ir = 1 - ir
                             self.metrics(vis, ir, fus)
             self.metrics.save_results(method=self.method, dataset=dataset_name)
 
@@ -257,6 +270,7 @@ class MasterModel(nn.Module):
 def benchmark_model(method, data, device, opt, **kwargs):
     model = import_model(method, opt, data=data, **kwargs)
     img_vis, img_ir = data
+    print(f"Benchmarking {model.method} for increasing image sizes until OOM...")
 
     def bench_data(model, img_vis, img_ir, rep):
         size = (128, 128)
@@ -266,6 +280,7 @@ def benchmark_model(method, data, device, opt, **kwargs):
         maximum_size = 0
         try:
             while cond:
+                print(f"Testing size: {size[0]}x{size[1]}...")
                 if hasattr(model, 'fixed_size'):
                     cond = 0
                     size = model.fixed_size

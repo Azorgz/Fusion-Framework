@@ -10,12 +10,14 @@ sys.modules["NightToday"] = NightToday
 
 
 def get_model(device, opt, **kwargs):
-    model = NightToDay('/home/godeta/PycharmProjects/MyTransform/checkpoints/download/weights/latest_net_NightToDay_UResNet', trainable=False)
-    # model = NightToDay('/home/godeta/PycharmProjects/MyTransform/checkpoints/NightToday/100_net_ResNet', trainable=False)
-    # model = NightToDay(os.getcwd() + '/fusion_framework/methods/Fusion/NightToDay/checkpoints/latest_net_NightToDay_IAware', trainable=False)
-    # model = NightToDay(os.getcwd() + '/fusion_framework/methods/Fusion/NightToDay/checkpoints/latest_net_NightToDay_UResNet', trainable=False)
+    # path = '/home/godeta/PycharmProjects/MyTransform/checkpoints/NightToday/latest_net_NightToDay_UResNet'
+    # path = '/home/godeta/PycharmProjects/MyTransform/checkpoints/NightToday/latest_net_NightToDay_UResNet_wo_detail'
+    # path = '/home/godeta/PycharmProjects/MyTransform/checkpoints/NightToday/latest_net_NightToDay_UResNet_wo_fft'
+    # path = '/home/godeta/PycharmProjects/MyTransform/checkpoints/NightToday/latest_net_NightToDay_UResNet_wo_noise'
+    path = os.getcwd() + '/fusion_framework/methods/Fusion/NightToDay/checkpoints/latest_net_NightToDay_UResNet_best'
+    # path = os.getcwd() + '/fusion_framework/methods/Fusion/NightToDay/checkpoints/100_net_NightToDay_NoFuse'
 
-    model.opt.model.fusion_first = False
+    model = NightToDay(path, trainable=False)
 
     class Model(torch.nn.Module):
         def __init__(self):
@@ -23,7 +25,9 @@ def get_model(device, opt, **kwargs):
             self.device = device
             self.model = model
             self.scale = 2**model.opt.model.gen.downscaling
-            self.max_size = (1024, 1024)
+            self.max_size = (2048, 2048)
+            self.inverse_ir = True
+            self.no_fuse = True if 'NoFuse' in path else False
 
         def forward(self, img_vis, img_ir):
             if img_vis.shape[-2] > self.max_size[0] or img_vis.shape[-1] > self.max_size[1]:
@@ -44,10 +48,13 @@ def get_model(device, opt, **kwargs):
             else:
                 beforepad_shape = None
             with torch.no_grad():
-                # fake_D = self.model(img_ir.to(self.device), align_first=False)
-                img_vis[(img_vis.mean(1, keepdim=True) == 0).repeat(1, 3, 1, 1)] = 0.5
-                # img_vis = img_vis*0.
-                fake_D, fused_IR = self.model(img_ir.to(self.device), img_vis.to(self.device), return_fused_IR=True, align_first=False)
+                if self.no_fuse:
+                    fake_D = self.model(img_ir.to(self.device), align_first=False)
+                else:
+                    img_vis[(img_vis.mean(1, keepdim=True) == 0).repeat(1, 3, 1, 1)] = 0.5
+                    # img_vis = img_vis*0.
+                    fake_D, fused_IR = self.model(img_ir.to(self.device), img_vis.to(self.device), return_fused_IR=True, align_first=False)
+                # seg = self.model.segmentation(thermal=img_ir.to(self.device), night=img_vis.to(self.device))
             if beforepad_shape is not None:
                 fake_D = fake_D[..., :beforepad_shape[0], :beforepad_shape[1]]
                 img_vis = img_vis.unpad()

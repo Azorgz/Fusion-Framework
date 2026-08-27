@@ -550,6 +550,10 @@ class LETNet(nn.Module):
 
     def forward(self, input):
 
+        h_ori, w_ori = input.shape[-2:]
+        if h_ori % 32 != 0 or w_ori % 32 != 0:
+            input = F.interpolate(input, (h_ori - h_ori % 32, w_ori - w_ori % 32), mode='bilinear', align_corners=False)
+
         output0 = self.init_conv(input)
         output0 = self.bn_prelu_1(output0)
 
@@ -569,7 +573,6 @@ class LETNet(nn.Module):
         output3 = self.bn_prelu_4(output3)
 
         #Transformer
-
         b, c, h, w = output3.shape
         output4 = self.transformer1(output3)
 
@@ -594,6 +597,7 @@ class LETNet(nn.Module):
 
         out = F.interpolate(output6, input.size()[2:], mode='bilinear', align_corners=False)
         out = self.classifier(out)
+        out = F.interpolate(out, (h_ori, w_ori), mode='bilinear', align_corners=False)
         return out
 
 
@@ -601,4 +605,4 @@ class LETNet(nn.Module):
 if __name__ == '__main__':
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = LETNet(classes=19).to(device)
-    summary(model, (3, 512, 1024))
+    summary(model, (3, 512, 512))

@@ -24,29 +24,28 @@ class Options():
 
     def initialize(self):
         # Method parameters
-        # 'NightToday', 'SeAFusion', 'TarDAL', 'TextIF', 'SaliencyMaskedFusion', 'MaeFuse', 'Alpha_blending', 'SAGE', 'PAIF'
-        # 'NightToday', 'TextIF', 'SaliencyMaskedFusion', 'Alpha_blending'
-        self.parser.add_argument('--name', default=['NightToday', 'TextIF', 'SaliencyMaskedFusion', 'Alpha_blending'], type=str or list or tuple, choices=All_METHODS, help='name of the method tested')
+        # 'Alpha_blending', 'SeAFusion', 'TarDAL', 'TextIF', 'MaeFuse', 'SAGE', 'PAIF', 'NightToday'
+        self.parser.add_argument('--name', default=['GIFNet'], type=str | list | tuple, choices=All_METHODS, help='name of the method tested')
         self.parser.add_argument('--device', default='cuda', type=str, choices=['cuda', 'cpu'], help='cuda or cpu according your material')
         self.parser.add_argument('--task', default='fusion', type=str, choices=['auto', 'fusion', 'wrapping', 'wrapping_and_fusion', 'profile'], help='fusion ,wrapping or wrapping&fusion')
-        self.parser.add_argument('--direction', default='ir2vis', type=str, choices=['vis2ir', 'ir2vis'], help='vis2ir or ir2vis')
+        self.parser.add_argument('--direction', default='vis2ir', type=str, choices=['vis2ir', 'ir2vis'], help='vis2ir or ir2vis')
 
         # Datasets - DataLoader
-        self.parser.add_argument('--dataset', default=['Exp_selection'], type=str or list, choices=list(DATASETS.keys()), help='Name of the dataset used for testing')
+        self.parser.add_argument('--dataset', default=['FLIR_reg_night'], type=str or list, choices=list(DATASETS.keys()), help='Name of the dataset used for testing')
         self.parser.add_argument('--sequence', default=0, type=int, help='only for wrapping')
         self.parser.add_argument('--reset_result', default=True, type=bool, help='Erase the previous results for the given dataset/method')
         self.parser.add_argument('--shuffle', default=False, type=bool, help='Shuffle the input dataset')
-        self.parser.add_argument('--sampling', default=1, type=int, help='Dataset subsampling')
-        self.parser.add_argument('--resize_load', default=False, type=bool, help='Need to resize the loaded image')
-        self.parser.add_argument('--resize_infer', default=False, type=bool, help='Need to resize the input for fusion')
-        self.parser.add_argument('--resize_save', default=True, type=bool, help='Need to resize the input for fusion')
+        self.parser.add_argument('--sampling', default=25, type=int, help='Dataset subsampling')
+        self.parser.add_argument('--resize_load', default=True, type=bool, help='Need to resize the loaded image')
+        self.parser.add_argument('--resize_infer', default=True, type=bool, help='Need to resize the input for fusion')
+        self.parser.add_argument('--resize_save', default=False, type=bool, help='Need to resize the input for fusion')
         self.parser.add_argument('--crop_before', default=[0, 0, 0, 0], type=Tuple[int, int, int, int], help='Need to crop the input image') #[35, 105, 25, 95]
         self.parser.add_argument('--crop_after', default=[0, 0, 0, 0], type=Tuple[int, int, int, int], help='Need to crop the aligned image') #[35, 105, 25, 95]
-        self.parser.add_argument('--crop_common_roi', default=True, type=bool, help='Need to crop the aligned image automatically to common ROI') #[35, 105, 25, 95]
+        self.parser.add_argument('--crop_common_roi', default=False, type=bool, help='Need to crop the aligned image automatically to common ROI') #[35, 105, 25, 95]
         self.parser.add_argument('--load_16bits', default=False, type=bool, help='Load 16 bits image if available')
         self.parser.add_argument('--loadSize', type=tuple, default=(480, 640), help='scale images to this size in dataloader')
-        self.parser.add_argument('--inferSize', type=tuple, default=(512, 512), help='scale images to this size before fusion')
-        self.parser.add_argument('--metrics', type=str or list, default='all', choices=list(METRICS_DICT.keys()), help='Compute metrics on the fused image')
+        self.parser.add_argument('--inferSize', type=tuple, default=(480, 640), help='scale images to this size before fusion')
+        self.parser.add_argument('--metrics', type=str or list, default=[], choices=list(METRICS_DICT.keys()), help='Compute metrics on the fused image')
         self.initialized = True
 
     def parse(self):
@@ -85,7 +84,6 @@ class Options():
                         (f"Method {n[0]} is not a wrapping method. Please choose a method in "
                          f"{(WRAPPING_METHODS | WRAPPING_AND_FUSION_METHODS).keys()}")
                     self.opt.name[i] = n.lower()
-
             elif self.opt.task == 'wrapping_and_fusion':
                 for i, n in enumerate(self.opt.name):
                     if not isinstance(n, tuple):
@@ -117,6 +115,17 @@ class Options():
                                 (f"Method {n[1]} is not a fusion method. Please choose a method in "
                                  f"{(FUSION_METHODS | WRAPPING_AND_FUSION_METHODS).keys()}")
                             self.opt.name[i] = (n[0].lower(), n[1].lower())
+            else:
+                for i, n in enumerate(self.opt.name):
+                    if n.lower() == 'all':
+                        self.opt.name.pop(i)
+                        self.opt.name += list(All_METHODS.values())
+                        continue
+                    assert n.lower() in All_METHODS, \
+                        (f"Method {n} is not a valid method. Please choose a method in "
+                         f"{All_METHODS.keys()}")
+                    self.opt.name[i] = n
+                self.opt.metrics = []
 
         args = vars(self.opt)
 

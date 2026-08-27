@@ -1,20 +1,20 @@
 ------------ Options -------------
 crop_after: [0, 0, 0, 0]
 crop_before: [0, 0, 0, 0]
-crop_common_roi: True
-dataset: ['Exp_selection']
+crop_common_roi: False
+dataset: ['FLIR_reg_night']
 device: cuda
-direction: ir2vis
-inferSize: (512, 512)
+direction: vis2ir
+inferSize: (480, 640)
 loadSize: (480, 640)
 load_16bits: False
-metrics: all
-name: ['nighttoday', 'textif', 'saliencymaskedfusion', 'alpha_blending']
+metrics: []
+name: ['gifnet']
 reset_result: True
-resize_infer: False
-resize_load: False
-resize_save: True
-sampling: 1
+resize_infer: True
+resize_load: True
+resize_save: False
+sampling: 25
 sequence: 0
 shuffle: False
 task: fusion

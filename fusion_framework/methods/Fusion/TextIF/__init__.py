@@ -25,6 +25,7 @@ def get_model(device, opt, **kwargs):
             self.line =  "In the context of infrared-visible image fusion, visible images are susceptible to extremely low light degradation."
             # self.line = "In the context of infrared-visible image fusion, we aim to enhance the pedestrian visibility"
             # self.line = "In the context of infrared-visible image fusion, we aim to enhance a lot the pedestrian detection capability"
+            # self.line = ""
 
         @torch.no_grad()
         def forward(self, img_vis, img_ir):

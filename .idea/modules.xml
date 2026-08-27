@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FusionMethods.iml" filepath="$PROJECT_DIR$/.idea/FusionMethods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/depth_pro.iml" filepath="$PROJECT_DIR$/.idea/depth_pro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/xcalib.iml" filepath="$PROJECT_DIR$/.idea/xcalib.iml" />
     </modules>
   </component>
 </project>

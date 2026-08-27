@@ -15,12 +15,13 @@ def ProfileMethods(opt):
     opt.sampling = 1
     dataLoader = list(get_dataloaders(opt).values())[0]  # Use only the first dataset for profiling
     for method in methods:
+        print(f"Profiling method: {method}, with 5 rep at each size")
         img_vis, img_ir, _ = dataLoader.__iter__().__next__()
         img_vis = img_vis.to(device)
         img_ir = img_ir.to(device)
-        profiling_result = {f'{method}': benchmark_model(method, (img_vis, img_ir), device, opt)}
+        profiling_result = {f'{method}': benchmark_model(method.lower(), (img_vis, img_ir), device, opt, path_result=os.getcwd())}
         print(f"Benchmarking results for {method}: {profiling_result}")
-        file_name = os.getcwd() + "/methods/ProfilingResults.yaml"
+        file_name = os.getcwd() + "/fusion_framework/methods/ProfilingResults.yaml"
         if os.path.exists(file_name):
             with open(file_name, "r") as f:
                 profile = yaml.safe_load(f) or {}

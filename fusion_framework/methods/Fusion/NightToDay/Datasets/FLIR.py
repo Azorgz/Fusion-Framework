@@ -1,8 +1,13 @@
 import os
 import socket
+from pathlib import Path
+
 from ImagesCameras import ImageTensor
 from torch import Tensor
 from .DatasetBase import TrainDataset, TestDataset
+
+ROOT_DIR = '/home/godeta/PycharmProjects/TIR2VIS/datasets/'
+# ROOT_DIR = Path(__file__).resolve().parent
 
 
 class FLIR(TrainDataset):
@@ -11,9 +16,8 @@ class FLIR(TrainDataset):
     """
     name = 'FLIR'
     root = '/silenus/PROJECTS/pr-remote-sensing-1a/godeta/datasets/FLIR/' \
-        if not 'laptop'in socket.gethostname() else \
-        '/home/godeta/PycharmProjects/TIR2VIS/datasets/FLIR/'
-
+        if not ('laptop'in socket.gethostname() or 'workstation' in socket.gethostname()) else \
+        f'{str(ROOT_DIR)}/FLIR/'
 
     def __init__(self, opt):
         self.train_D = self.root + "FLIR_datasets/trainA"
@@ -40,13 +44,6 @@ class FLIR(TrainDataset):
         image = ImageTensor(path[idx]) ** fac * 255 if seg else ImageTensor(path[idx])
         if image.depth==16:
             image = image.normalize()
-        # if crop and self.crop_xxyy:
-            # crop = self.crop_xxyy[idx]
-            # crop = crop[0]*500//640, crop[1]*500//640, crop[2]*400//512, crop[3]*400//512
-            # crop = (max(crop[0]-120//2, 0), max(crop[1]-120//2, 0), max(crop[2] - 112//2, 0), max(crop[3] - 112//2, 0))
-        # else:
-        #     crop = (0, 0, 0, 0)
-        # image = (image.crop(crop, mode='lrtb') if seg else
         if not seg:
             crop_ratio_w = 1/((500 - 360) / 2 / 500)
             crop_ratio_h = 1/((400 - 288) / 2 / 400)

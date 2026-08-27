@@ -15,17 +15,16 @@ class FLIR_selection(DatasetBase):
     Dataset class for the FLIR dataset.
     """
     root_dir = "/home/godeta/PycharmProjects/TIR2VIS/datasets/FLIR/FLIR_datasets/"
-    idx = [5556, 5570, 5650, 5690, 5985, 6081, 6165, 6244, 6273,
-           7005, 7022, 7029, 7037, 7057, 7065, 7134, 7145, 7168,
-           7206, 7208, 7213, 7227, 7306, 7370, 7394, 7408, 7432, 7435, 7523,
-           7546, 7774, 7835, 7867, 7898, 7930, 8001, 8123, 8147, 8185, 8222, 8389, 8504, 8539, 8546,
-           2346, 3500, 3567, 4335, 5217, 8794]
+    idx = [5556, 5570, 5650, 5690, 5985, 6081, 6165, 6244, 6273, 7005, 7022, 7029, 7037, 7057, 7065, 7134, 7145,
+           7206, 7208, 7213, 7227, 7306, 7370, 7394, 7408, 7432, 7435, 7523, 7546, 7774, 7835, 7867, 7898, 7930,
+           8001, 8025, 8029, 8041, 8123, 8138, 8147, 8185, 8389, 8504, 8539, 8546,
+           3391, 4956, 5649, 8750]
 
     def __init__(self, opt):
         self.path_vis = self.root_dir + "trainC_0/"
-        self.path_vis2 = self.root_dir + "trainA/"
+        self.path_vis2 = '/home/godeta/Images/ICCV/Data_publi/FLIR_day/' + "vis/"
         self.path_ir = self.root_dir + "trainB_0/"
-        self.path_ir2 = self.root_dir + "trainA_T/"
+        self.path_ir2 = '/home/godeta/Images/ICCV/Data_publi/FLIR_day/' + "ir_reg_ours/"
 
         super().__init__(opt)
         list_vis = sorted([self.path_vis + '/' + f for f in os.listdir(self.path_vis) if isimage(f)] +
@@ -38,10 +37,10 @@ class FLIR_selection(DatasetBase):
         self.image_ir = [f for idx, f in enumerate(list_ir) if (idx % opt.sampling == 0 and isimage(f))]
         assert len(self.image_vis) == len(self.image_ir), "Number of visible and infrared images must be equal."
         self.index = [i for i, f in enumerate(self.image_vis) if int(os.path.basename(f).split('_')[-1].split('.')[0]) in self.idx]
+        self.idx_list = [i for i in self.index if i not in self.idx_ignore]
 
     def __getitem__(self, idx):
-        idx_list = [i for i in self.index if i not in self.idx_ignore]
-        idx = idx_list[idx % len(idx_list)]
+        idx = self.idx_list[idx % len(self.idx_list)]
         if self.direction == 'ir2vis':
             image_vis = ImageTensor(self.image_vis[idx])
             image_ir = ImageTensor(self.image_ir[idx]).RGB('gray').match_shape(image_vis)
@@ -59,10 +58,10 @@ class FLIR_selection(DatasetBase):
             shape = image_ir.shape[-2:]
         if 'tiff' in self.image_ir[idx].lower():
             image_ir = image_ir.normalize()
-        if shape[0] > 1024 or shape[1] > 1024:
-            shape_ = shape[0]//2, shape[1]//2
-            if image_vis.shape[-2] != shape_[0] or image_vis.shape[-1] != shape_[1]:
-                image_vis = image_vis.resize(shape_)
-                image_ir = image_ir.resize(shape_)
-            shape = shape_
+        # if shape[0] > 1024 or shape[1] > 1024:
+        #     shape_ = shape[0]//2, shape[1]//2
+        #     if image_vis.shape[-2] != shape_[0] or image_vis.shape[-1] != shape_[1]:
+        #         image_vis = image_vis.resize(shape_)
+        #         image_ir = image_ir.resize(shape_)
+        #     shape = shape_
         return image_vis, image_ir, shape

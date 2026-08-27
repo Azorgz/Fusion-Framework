@@ -11,9 +11,9 @@ class LYNRED_DETECTION(DatasetBase):
     Dataset class for the LYNRED day dataset.
     """
     root_dir = "/home/godeta/Téléchargements/LYNRED_multimodal_detection_V1/detection_dataset/"
-    idx = [2021, 2040, 2099, 2160, 2508, 2521, 2569, 2574, 2586, 2621, 2696, 2710, 2765, 2789, 2904,
-           2911, 2974, 3091, 3127, 3176, 3232, 3521, 3523, 3528, 3538, 3603, 3619, 3732, 3761, 3803, 3852, 3913,
-           2051, 2063, 2100, 2927, 2221, 2776, 2247, 2368, 2658, 2465]
+    # idx = [2021, 2040, 2099, 2160, 2508, 2521, 2569, 2574, 2586, 2621, 2696, 2710, 2765, 2789, 2904,
+    #        2911, 2974, 3091, 3127, 3176, 3232, 3521, 3523, 3528, 3538, 3603, 3619, 3732, 3761, 3803, 3852, 3913,
+    #        2051, 2063, 2100, 2927, 2221, 2776, 2247, 2368, 2658, 2465]
 
     def __init__(self, opt):
         self.path_vis = self.root_dir + "visible/"
@@ -21,8 +21,8 @@ class LYNRED_DETECTION(DatasetBase):
         # self.path_ir_16bits = self.root_dir + "infrared_16bits_aligned/"
         self.load_16bits = opt.load_16bits
         super().__init__(opt)
-        self.index = [i for i, f in enumerate(self.image_vis) if
-                      int(os.path.basename(f).split('_')[-1].split('.')[0]) in self.idx]
+        # self.index = [i for i, f in enumerate(self.image_vis) if
+        #               int(os.path.basename(f).split('_')[-1].split('.')[0]) in self.idx]
         self.epsilon = 1e-6
 
     @property

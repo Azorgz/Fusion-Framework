@@ -8,13 +8,14 @@ from typing import Literal
 import torch
 from torch import nn
 from torch.nn.functional import interpolate
+from ultralytics.optim import MuSGD
 
 from . import GenConfig, TrainConfig, SegConfig, DiscrConfig
-from .Fusion import U_ResNetFusion, IlluminationAwareFusion
+from .Fusion import U_ResNetFusion
 from .LETNet import LETNet
 from .discriminators import NLayerDiscriminatorSN
 from .generators import ResnetGenEncoder, ResnetGenDecoder, ResnetBlock
-from .modules import Sequential
+from .modules import Sequential, SwinBlock, DropInSwinBlock
 from .segmentors import SegmentorHeadv2
 from .utilities import weights_init
 
@@ -40,14 +41,7 @@ class Plexer(nn.Module):
     def train(self, *args, mode: bool = True):
         super().train(mode=mode)
         for net in self.networks:
-            # if isinstance(net, SimpleCondViT) or isinstance(net, U_ResNetFusion):
-            #     net.train(mode=mode)
-            #     for p in net.parameters():
-            #         p.requires_grad = True
-            # else:
             net.train(mode=False)
-                # for p in net.parameters():
-                #     p.requires_grad = False
         for arg in args if args else range(len(self.networks)):
             if arg < len(self.networks):
                 self.networks[arg].train(mode=mode)
@@ -65,13 +59,14 @@ class Plexer(nn.Module):
         for net in self.networks:
             net.apply(func)
 
-    def init_optimizers(self, opt, lr, betas):
-        if self.split_optimizers:
-
-            optimizers = {name: opt(net.parameters(), lr=lr, betas=betas)
-                          for name, net in zip(self.names, self.networks)}
-        else:
-            optimizers = [opt((p for net in self.networks for p in net.parameters() if p.requires_grad),
+    def init_optimizers(self, lr, betas):
+        # opt = MuSGD
+        # param_groups = [{'params': (p for net in self.networks for p in net.parameters() if p.requires_grad and p.ndim > 1)
+        #                 , 'use_muon': True}, {'params': (p for net in self.networks for p in net.parameters() if p.requires_grad and p.ndim <= 1)
+        #                 , 'use_muon': False}]
+        # optimizers = [opt(param_groups, lr=0.001, momentum=0.98, weight_decay=0.005)]
+        opt = torch.optim.Adam
+        optimizers = [opt((p for net in self.networks for p in net.parameters() if p.requires_grad),
                               lr=lr, betas=betas)]
         setattr(self, 'optimizers', optimizers)
 
@@ -109,20 +104,16 @@ class Plexer(nn.Module):
             weights[self.names[i]] = net.state_dict()
         return weights
 
-    def load_split_weights(self, save_path: str | list):
-        if not isinstance(save_path, list):
-            save_path = [save_path] * len(self.networks)
-        for i, (net, path) in enumerate(zip(self.networks, save_path)):
-            filename = path + '.pth'
-            if isfile(filename):
-                net.load_state_dict(torch.load(filename))
-        self.to(device=self.device)
-
     def load_weights(self, weights: dict):
         for i, net in enumerate(self.networks):
             if i < len(self.names):
                 if self.names[i] in weights:
-                    net.load_state_dict(weights[self.names[i]], strict=False)
+                    try:
+                        net.load_state_dict(weights[self.names[i]], strict=True)
+                    except RuntimeError as e:
+                        print(f"Error loading weights for {self.names[i]}: {e}, loading with strict=False.")
+                        pass
+                        # net.load_state_dict(weights[self.names[i]], strict=False)
         self.to(device=self.device)
 
 
@@ -133,25 +124,32 @@ class G_Plexer(Plexer):
     def __init__(self, names, opt: GenConfig, training_cfg: TrainConfig, device: torch.device):
         super(G_Plexer, self).__init__(names, device, training_cfg.split_optimizers)
         self.input_size = opt.input_size
-        self.fusion_first = opt.fusion_first
         self.opt = opt
+        fus = opt.fus
+        self.enc_type = fus.type if fus.type in ['IAware', 'UResNet'] else 'UResNet'
         encoders = [ResnetGenEncoder] * 2
-        decoders = [ResnetGenDecoder] * 2  # for _ in range(len(self.names_domains))]
-        enc_args = [(3, opt.hidden_dim, opt.n_enc_layers, opt.dropout, opt.downscaling),
-                    (3 if opt.fusion_first else 6, opt.hidden_dim, opt.n_enc_layers, opt.dropout, opt.downscaling)]
+        decoders = [ResnetGenDecoder] * 2
+        enc_args = [(fus.preprocess_thermal if fus.type == 'IAware' else 3,
+                     opt.hidden_dim if fus.type == 'IAware' else opt.hidden_dim,
+                     fus.n_res_blocks if fus.type == 'IAware' else opt.n_enc_layers,
+                     fus.dropout if fus.type == 'IAware' else opt.dropout,
+                     opt.downscaling if fus.type == 'IAware' else opt.downscaling)] * 2
         dec_args = [(3, opt.hidden_dim, opt.n_dec_layers, opt.dropout, opt.downscaling),
-                    (3 if opt.fusion_first else 6, opt.hidden_dim, opt.n_dec_layers, opt.dropout, opt.downscaling)]
+                    (3, opt.hidden_dim, opt.n_dec_layers, opt.dropout, opt.downscaling)]
+        # block_shared = DropInSwinBlock
         block_shared = ResnetBlock
         shenc_args = (opt.n_shared_layers, opt.hidden_dim, nn.BatchNorm2d)
+        # shenc_args = (opt.hidden_dim, )
         fus = opt.fus
-        if not hasattr(fus, 'type'):
-            fus.type = 'IAware'
         if fus.type == 'UResNet':
             fusion_module = U_ResNetFusion
         else:
-            fusion_module = IlluminationAwareFusion
-        self.fusion = fusion_module(hidden_dim=fus.hidden_dim, n_enc_layers=fus.n_enc_layers, dropout=fus.dropout,
-                                     n_downscaling=fus.n_downscaling, thermal_preprocessCfg=fus.preprocess_thermal)
+            fusion_module = None
+        if fusion_module is not None:
+            self.fusion = fusion_module(hidden_dim=fus.hidden_dim, n_enc_layers=fus.n_res_blocks,
+                                        dropout=fus.dropout, thermal_preprocessCfg=fus.preprocess_thermal)
+        else:
+            self.fusion = nn.Identity()
         self.encoders = [encoder(*enc_arg).train(False) for encoder, enc_arg in zip(encoders, enc_args)]
         self.decoders = [decoder(*dec_arg).train(False) for decoder, dec_arg in zip(decoders, dec_args)]
         self.networks: list = self.encoders + self.decoders + [self.fusion]
@@ -167,37 +165,37 @@ class G_Plexer(Plexer):
         self.to(self.device)
         self.ori_shape = None
         self.train()
-        self.init_optimizers(torch.optim.Adam, lr=training_cfg.lr_G, betas=training_cfg.betas_G)
+        self.init_optimizers(lr=training_cfg.lr_G, betas=training_cfg.betas_G)
 
     def encode(self, x, *args, from_: str = None, **kwargs):
         assert from_ in self.names_domains, f"Unknown source domain: {from_}"
-        return_im = False
-        if len(args) and self.fusion_first:
-            x, ir, n, *other = self.fusion(x, *args, **kwargs)
-            ir_ = torch.abs(ir.mean(1, keepdim=True)) * 0.5 + 1
-            x = torch.tanh(x * ir_)
-            return_im = True
-        elif len(args) and not self.fusion_first:
-            x = torch.cat((x, *args), dim=1)
-            n = args[0]
-            return_im = True
+        if self.enc_type == 'UResNet' and len(args):
+            fake_TN, ir, n = self.fusion(x, *args, **kwargs)
+            fake_TN = self._resize(fake_TN)
+            output = self.encoders[self.names_domains[from_]](fake_TN)
+            output = self.shared_encoder(output)
+        elif self.enc_type == 'IAware' and len(args):
+            x = self._resize(x)
+            output, ir, n = self.encoders[self.names_domains[from_]](x, *args, **kwargs)
+            output = self.shared_encoder(output)
+            fake_TN = self.decoders[self.names_domains[from_]](output)
+        else:
+            output = self.encoders[self.names_domains[from_]](x)
+            return self.shared_encoder(output)
+        return output, fake_TN, ir, n
+
+    def _resize(self, x):
         self.ori_shape = x.shape
-        scale = 2**self.opt.downscaling
-        # input_size = self.input_size if isinstance(self.input_size, (list, tuple)) else (self.input_size, self.input_size)
+        scale = 2 ** self.opt.downscaling
         input_size = (-1, -1)
         if input_size[0] < 0:
-            input_size = self.ori_shape[-2]//scale*scale, self.ori_shape[-1]//scale*scale
+            input_size = self.ori_shape[-2] // scale * scale, self.ori_shape[-1] // scale * scale
         else:
             if input_size[0] / scale != input_size[0] // scale:
                 input_size[0] = input_size[0] // scale * scale
             if input_size[1] / scale != input_size[1] // scale:
                 input_size[1] = input_size[1] // scale * scale
-        x = interpolate(x, size=input_size, mode='bilinear', align_corners=False)
-        output = self.encoders[self.names_domains[from_]](x)
-        output = self.shared_encoder(output)
-        if return_im:
-            return output, x, ir, n, *other
-        return output
+        return interpolate(x, size=input_size, mode='bilinear', align_corners=False)
 
     def clean_IR(self, ir):
         return self.fusion.thermal_preprocess(ir)
@@ -205,7 +203,8 @@ class G_Plexer(Plexer):
     def decode(self, encoded, to_: str = None):
         assert to_ in self.names_domains, f"Unknown target domain: {to_}"
         out = self.decoders[self.names_domains[to_]](encoded)
-        return interpolate(out, size=self.ori_shape[-2:], mode='bilinear', align_corners=False)
+        out = interpolate(out, size=self.ori_shape[-2:], mode='bilinear', align_corners=False) if self.ori_shape is not None else out
+        return out
 
     def __repr__(self):
         e, d = self.encoders[0], self.decoders[0]
@@ -221,16 +220,14 @@ class D_Plexer(Plexer):
     def __init__(self, names, opt: DiscrConfig, training_cfg: TrainConfig, device: torch.device):
         super(D_Plexer, self).__init__(names, device, training_cfg.split_optimizers)
         discriminators = NLayerDiscriminatorSN
-        if opt.fusion_first:
-            discr_args = [{'input_nc': 3, 'base_dim': opt.base_dim, 'n_layers': opt.n_layers},
-                          {'input_nc': 3, 'base_dim': opt.base_dim, 'n_layers': opt.n_layers}]
-        else:
-            discr_args = [{'input_nc': 3, 'base_dim': opt.base_dim, 'n_layers': opt.n_layers}] * 3
+        discr_args = [{'input_nc': 3, 'base_dim': opt.base_dim, 'n_layers': opt.n_layers},
+                      {'input_nc': 3, 'base_dim': opt.base_dim, 'n_layers': opt.n_layers}]
         self.networks = [discriminators(**model_arg) for model_arg in discr_args]
         self.names = [f'D_{dom}' for dom in self.names_domains]
         self.apply(weights_init)
         self.to(self.device)
-        self.init_optimizers(torch.optim.Adam, lr=training_cfg.lr_D, betas=training_cfg.betas_D)
+        self.init_optimizers(lr=training_cfg.lr_G, betas=training_cfg.betas_G)
+        # self.init_optimizers(torch.optim.Adam, lr=training_cfg.lr_D, betas=training_cfg.betas_D)
 
     def forward(self, x, from_: str = None):
         assert from_ in self.names_domains, f"Unknown source domain: {from_}"
@@ -255,10 +252,10 @@ class S_Plexer(Plexer):
         if not opt.type == 'LETNet':
             model = SegmentorHeadv2
             model_args = [(3, opt.n_layers, opt.base_dim, opt.num_classes, 'instance'),
-                          (3 if opt.fusion_first else 6, opt.n_layers, opt.base_dim, opt.num_classes, 'instance')]
+                          (3, opt.n_layers, opt.base_dim, opt.num_classes, 'instance')]
         else:
             model = LETNet
-            model_args = [(opt.num_classes, 3), (opt.num_classes, 3 if opt.fusion_first else 6)]
+            model_args = [(opt.num_classes, 3)] * 2
 
         self.networks = [model(*model_arg) for model_arg in model_args]
         self.names = [f'S_{dom}' for dom in self.names_domains]
@@ -268,9 +265,12 @@ class S_Plexer(Plexer):
                 path = BASE_DIR / 'checkpoints' / f'{name}.pth'
             else:
                 path = f'/bettik/PROJECTS/pr-remote-sensing-1a/godeta/checkpoints/{name}.pth'
-            net.load_state_dict(torch.load(path), strict=False)
+            try:
+                net.load_state_dict(torch.load(path), strict=False)
+            except FileNotFoundError as e:
+                print(f"Checkpoint for {name} not found at {path}. Starting with random weights.")
         self.to(self.device)
-        self.init_optimizers(torch.optim.Adam, lr=training_cfg.lr_S, betas=training_cfg.betas_D)
+        self.init_optimizers(lr=training_cfg.lr_G, betas=training_cfg.betas_G)
         self.freeze = True
 
     def forward(self, x, *args, from_: str = None):

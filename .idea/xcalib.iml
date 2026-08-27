@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.system.id="pyproject.toml" type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/fusion_framework/methods/Wrapping/XCalib">
+      <sourceFolder url="file://$MODULE_DIR$/fusion_framework/methods/Wrapping/XCalib" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/fusion_framework/methods/Wrapping/XCalib/model/backbone/Depth_anything/metric_depth/checkpoints" />
+      <excludeFolder url="file://$MODULE_DIR$/fusion_framework/methods/Wrapping/XCalib/model/flow/CrossModalFlow/cross_raft_ckpt" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

@@ -46,6 +46,7 @@ class DatasetBase(Dataset):
         assert len(self.image_vis) == len(self.image_ir), "Number of visible and infrared images must be equal."
         self.crop = opt.crop_before if opt.crop_before else self.crop  # [left, right, top, bottom]
         self.index = [i for i in range(len(self.image_vis))]
+        self.idx_list = [i for i in self.index if i not in self.idx_ignore]
 
     @property
     def name(self):
@@ -55,8 +56,7 @@ class DatasetBase(Dataset):
         return len(self.index) - len(self.idx_ignore)
 
     def __getitem__(self, idx):
-        idx_list = [i for i in self.index if i not in self.idx_ignore]
-        idx = idx_list[idx % len(idx_list)]
+        idx = self.idx_list[idx % len(self.idx_list)]
         if self.direction == 'ir2vis':
             image_vis = ImageTensor(self.image_vis[idx])
             image_ir = ImageTensor(self.image_ir[idx]).RGB('gray').match_shape(image_vis)
@@ -66,12 +66,11 @@ class DatasetBase(Dataset):
         if self.crop != [0, 0, 0, 0]:
             image_ir = image_ir.crop(self.crop, mode='lrtb')
             image_vis = image_vis.crop(self.crop, mode='lrtb')
+        shape = image_ir.shape[-2:]
         if self.resize:
             image_vis = image_vis.resize(self.loadSize)
             shape = image_ir.shape[-2:]
             image_ir = image_ir.resize(self.loadSize)
-        else:
-            shape = image_ir.shape[-2:]
         return image_vis, image_ir, shape  # Return original size for resizing later
 
     def update(self, list_ignore):

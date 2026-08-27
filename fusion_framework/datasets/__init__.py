@@ -64,10 +64,13 @@ def collate_ImageTensor(batch):
     #     original_sizes = [item[3] for item in batch]
     #     return ImageTensor.batch(*images_vis), ImageTensor.batch(*images_ir), \
     #            (ImageTensor.batch(*images_ir_16bits) if images_ir_16bits[0] is not None else None), original_sizes
-    images_vis = [item[0] for item in batch]
-    images_ir = [item[1] for item in batch]
-    original_sizes = [item[2] for item in batch]
-    return ImageTensor.batch(*images_vis), ImageTensor.batch(*images_ir), original_sizes
+    nb_image = len(batch[0]) - 1  # Number of images returned by the dataset (e.g., 2 for most datasets, 3 for LYNRED_DETECTION)
+    if batch[0][0] is not None:
+        images = (ImageTensor.batch(*[item[j] for item in batch]) for j in range(nb_image))
+    else:
+        images = (None for _ in range(nb_image))
+    original_sizes = [item[-1] for item in batch]
+    return *images, original_sizes
 
 
 def get_dataset_class(module):
